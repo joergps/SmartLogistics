@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- https://spring.io/guides/gs/spring-boot-cli-and-js/ -->
+    <title>Sm@rtLogistics Web-GUI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Sm@rtLogistics</h1>
+    <p th:text="'Packstück ist ' + (${hasItem}? 'da' : 'NICHT da')" />
+</body>
+</html>
