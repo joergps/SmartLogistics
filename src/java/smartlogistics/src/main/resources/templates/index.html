@@ -1,12 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <!-- https://spring.io/guides/gs/spring-boot-cli-and-js/ -->
-    <title>Sm@rtLogistics Web-GUI</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <h1>Sm@rtLogistics</h1>
-    <p th:text="'Packstück ist ' + (${hasItem}? 'da' : 'NICHT da')" />
-</body>
+    <head>
+        <!-- https://spring.io/guides/gs/spring-boot-cli-and-js/ -->
+        <title>Sm@rtLogistics Web-GUI</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body>
+        <h1>Sm@rtLogistics</h1>
+        <p th:text="'Packstück ist ' + (${hasItem}? 'da' : 'NICHT da')" />
+        <h2>Bild des Packstückes</h2>
+        <img alt="Packstück" src="image.jpg" style="width: 960px; height: 540px;" />
+    </body>
 </html>
