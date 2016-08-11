@@ -2,14 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <!-- https://spring.io/guides/gs/spring-boot-cli-and-js/ -->
-        <title>Sm@rtLogistics Web-GUI</title>
+        <title th:text="#{index.title}">Sm@rtLogistics Web-GUI</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
 
     <body>
+        <!-- Example if message needs a parameter; use '{0}' in properties. -->
+        <!-- see http://stackoverflow.com/questions/20789441/how-to-show-localization-messages-with-parameters-in-spring-3-thymeleaf -->
+        <!-- p th:text="#{test('AAA')}" / -->
+
         <h1>Sm@rtLogistics</h1>
-        <p th:text="'Packstück ist ' + (${hasItem}? 'da' : 'NICHT da')" />
-        <h2>Bild des Packstückes</h2>
-        <img alt="Packstück" src="image.jpg" style="width: 960px; height: 540px;" />
+        <p th:text="#{index.hasItem.label}">Status station:</p>
+        <p th:text="(${hasItem}? #{index.hasItem.statusYes} : #{index.hasItem.statusNo})" />
+        <h2 th:text="#{index.packageImage.label}">Image of the package</h2>
+        <img alt="Package" src="image.jpg" style="width: 960px; height: 540px;" />
     </body>
 </html>
