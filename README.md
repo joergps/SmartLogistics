@@ -7,9 +7,6 @@ Das Projekt aus einem Sender und einem Empfänger. Der Sender ist ein Raspberry P
 # Java Web-Gui
 * Voraussetzung: Java 8
 * Download des Binaries aus bin/java
-* Start mit 
-``` bash
-java -jar smartlogistics-web-0.0.1.war
-'''
+* Start mit ``` java -jar smartlogistics-web-0.0.1.war```
 * Adresse Web-GUI: http://localhost:8080
-* Nachricht, dass ein Packstück da ist: `http://localhost:8080?hasItem=true'
+* Nachricht, dass ein Packstück da ist: http://localhost:8080?hasItem=true
