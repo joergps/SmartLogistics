@@ -54,7 +54,7 @@ def getDistance():
 def postHasItem():
 	print 'Distanz = %.1f cm' % distance
 	try:
-		r = requests.get(restUri, params=restParamHasItem)
+		r = requests.post(restUri, data=restParamHasItem)
 		# print r.text
 	except requests.exceptions.RequestException:
 		pass
@@ -62,7 +62,7 @@ def postHasItem():
 
 def postNoItem():
 	try:
-		requests.get(restUri, params=restParamNoItem)
+		requests.post(restUri, data=restParamNoItem)
 	except requests.exceptions.RequestException:
 		pass
 	return
