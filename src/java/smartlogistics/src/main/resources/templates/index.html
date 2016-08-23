@@ -4,6 +4,16 @@
         <!-- https://spring.io/guides/gs/spring-boot-cli-and-js/ -->
         <title th:text="#{index.title}">Sm@rtLogistics Web-GUI</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- Reload complete page every 5000ms. -->
+        <!-- see: http://stackoverflow.com/questions/2787679/how-to-reload-page-every-5-second -->
+        <script type="text/javascript">
+            window.setTimeout(
+                function(){
+                    document.location.reload(true);
+                },
+            5000);
+        </script>
     </head>
 
     <body>
