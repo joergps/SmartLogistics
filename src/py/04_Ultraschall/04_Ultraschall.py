@@ -9,6 +9,7 @@ print 'Starting 04_Ultraschall.py'
 # define constants
 NO_ELEMENT_DISTANCE = 210 # distance in cm that is returned if no element in front of sensor
 SONIC_SPEED = 34300 # sonic speed in cm/s
+TRIGGER_INTERVAL = 1 # every x seconds the ultra sound is triggered
 TRIGGER_TIME = 0.0001 # length of ultra sound trigger in seconds
 
 # define pins
@@ -50,18 +51,31 @@ def getDistance():
 
 	return result
 
+def postHasItem():
+	print 'Distanz = %.1f cm' % distance
+	try:
+		r = requests.get(restUri, params=restParamHasItem)
+		# print r.text
+	except requests.exceptions.RequestException:
+		pass
+	return
+
+def postNoItem():
+	try:
+		requests.get(restUri, params=restParamNoItem)
+	except requests.exceptions.RequestException:
+		pass
+	return
 
 if __name__ == '__main__':
 	try:
 		while True:
 			distance = getDistance()
 			if (distance < NO_ELEMENT_DISTANCE): 
-				print 'Distanz = %.1f cm' % distance
-				r = requests.get(restUri, params=restParamHasItem)
-				# print r.text
+				postHasItem()
 			else:
-				requests.get(restUri, params=restParamNoItem)
-			time.sleep(1)
+				postNoItem()
+			time.sleep(TRIGGER_INTERVAL)
 
 	except KeyboardInterrupt:
 		print '...Programm beendet.'
