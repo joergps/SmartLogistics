@@ -1,0 +1,146 @@
+attr global userattr cmdIcon devStateIcon devStateStyle icon sortby webCmd widgetOverride
+attr global autoload_undefined_devices 1
+attr global logfile ./log/fhem-%Y-%m.log
+attr global modpath .
+attr global motd none
+attr global statefile ./log/fhem.save
+attr global updateInBackground 1
+attr global verbose 1
+
+define telnetPort telnet 7072 global
+
+define WEB FHEMWEB 8083 global
+
+define WEBphone FHEMWEB 8084 global
+attr WEBphone stylesheetPrefix smallscreen
+
+define WEBtablet FHEMWEB 8085 global
+attr WEBtablet stylesheetPrefix touchpad
+
+# Fake FileLog entry, to access the fhem log from FHEMWEB 
+define Logfile FileLog ./log/fhem-%Y-%m.log fakelog
+
+define autocreate autocreate
+attr autocreate filelog ./log/%NAME-%Y.log
+
+define eventTypes eventTypes ./log/eventTypes.txt
+
+# Disable this to avoid looking for new USB devices on startup
+define initialUsbCheck notify global:INITIALIZED usb create
+define UC1 dummy
+attr UC1 group Sensor,
+attr UC1 room Ultraschall
+attr UC1 stateFormat Abstand
+attr UC1 userReadings Abstand
+define at_UC1 at +*00:00:01 {system 'sudo /usr/bin/python /opt/fhem/FHEM/UC1.sh &'}
+attr at_UC1 disable 1
+attr at_UC1 verbose 0
+define TABLETUI HTTPSRV overview/ ./www/overview Overview-UI
+define at_UC2 at +*00:00:01 {system 'sudo /usr/bin/python /opt/fhem/FHEM/UC2.sh &'}
+attr at_UC2 disable 1
+attr at_UC2 verbose 0
+define UC2 dummy
+attr UC2 group Sensor
+attr UC2 room Ultraschall
+attr UC2 stateFormat Abstand
+attr UC2 userReadings Abstand
+define at_UC3 at +*00:00:01 {system 'sudo /usr/bin/python /opt/fhem/FHEM/UC3.sh &'}
+attr at_UC3 disable 1
+attr at_UC3 verbose 0
+define UC3 dummy
+attr UC3 group Sensor
+attr UC3 room Ultraschall
+attr UC3 stateFormat Abstand
+attr UC3 userReadings Abstand
+define UC_Switch dummy
+attr UC_Switch alias Ultraschall-Messung
+attr UC_Switch devStateIcon on:general_an off:general_aus
+attr UC_Switch room Ultraschall
+attr UC_Switch webCmd on:off
+define n_UC_on notify UC_Switch:on {fhem("ATTR at_UC1 disable 0");;;; fhem("ATTR at_UC2 disable 0");;;; fhem("ATTR at_UC3 disable 0");;;; fhem("ATTR at_UC4 disable 0");;;;}
+define n_UC_off notify UC_Switch:off {fhem("ATTR at_UC1 disable 1");;;; fhem("ATTR at_UC2 disable 1");;;; fhem("ATTR at_UC3 disable 1");;;; fhem("ATTR at_UC4 disable 1");;;;}
+define UC1Status dummy
+attr UC1Status group normal
+define n_UC1Status notify UC1:.* {my $temp=ReadingsVal("UC1","Abstand","");; if($temp <= 40){ fhem("set UC1Status full");;;; fhem("set UC1StatusChallange 1");;;;} else {fhem("set UC1Status empty");;;; fhem("set UC1StatusChallange 0");;;;}}
+define UC2Status dummy
+attr UC2Status group normal
+define n_UC2Status notify UC2:.* {my $temp=ReadingsVal("UC2","Abstand","");; if($temp <= 40){ fhem("set UC2Status full");;;; fhem("set UC2StatusChallange 1");;;;} else {fhem("set UC2Status empty");;;; fhem("set UC2StatusChallange 0");;;;}}
+define UC3Status dummy
+attr UC3Status group normal
+define n_UC3Status notify UC3:.* {my $temp=ReadingsVal("UC3","Abstand","");; if($temp <= 40){ fhem("set UC3Status full");;;; fhem("set UC3StatusChallange 1");;;;} else {fhem("set UC3Status empty");;;; fhem("set UC3StatusChallange 0");;;;}}
+define mobile_ui HTTPSRV mobile ./www/mobile Mobile-UI
+define show_ui HTTPSRV Show ./www/show Show-UI
+define show_message dummy
+define n_distance_message notify UC1:.* {my $temp=ReadingsVal("UC1","Abstand","");; if($temp <= 200 && $temp > 120){ fhem("set show_message Hi komm mir doch näher.");;;; fhem("set  play_message1 on");;;;} if($temp <= 120 && $temp > 60 ){ fhem("set show_message So ist es schon besser.");;;; fhem("set  play_message2 on");;;;} if($temp <= 60){ fhem("set show_message Schau mal nach rechts. :-)");;;; fhem("set  play_message3 on");;;;}}
+define play_message1 dummy
+attr play_message1 webCmd on:off
+define play_message2 dummy
+attr play_message2 webCmd on:off
+define play_message3 dummy
+attr play_message3 webCmd on:off
+define n_only1message2 notify play_message2:on {fhem("set play_message1 off");;;; fhem("set play_message3 off");;;;}
+define n_only1message1 notify play_message1:on {fhem("set play_message2 off");;;; fhem("set play_message3 off");;;;}
+define n_only1message3 notify play_message3:on {fhem("set play_message1 off");;;; fhem("set play_message2 off");;;;}
+define sollUC1 dummy
+attr sollUC1 group Fach_soll
+define sollUC2 dummy
+attr sollUC2 group Fach_soll
+define sollUC3 dummy
+attr sollUC3 group Fach_soll
+define Challenge dummy
+attr Challenge room Game
+attr Challenge webCmd on:off
+define n_challange notify UC1Status:.* {my $moneyOLD=Value("money");; if(Value("UC1StatusChallange") eq Value("sollUC1") && Value("UC2StatusChallange") eq Value("sollUC2") && Value("UC3StatusChallange") eq Value("sollUC3")&& Value("UC4StatusChallange") eq Value("sollUC4")){my $newSollUC1 = int(rand(2));;;; my $newSollUC2 = int(rand(2));;;; my $newSollUC3 = int(rand(2));;;; my $newSollUC4 = int(rand(2));;;; my $newmoney = $moneyOLD+4;;;; fhem("set money $newmoney");;;; fhem("set sollUC1 $newSollUC1");;;; fhem("set sollUC2 $newSollUC2");;;; fhem("set sollUC3 $newSollUC3");;;; fhem("set sollUC4 $newSollUC4");;;; my $newScore=Value("score")+1;;;; fhem("set score $newScore");;;;} else {my $newmoney = $moneyOLD-3;;;; if($newmoney >=0) {fhem("set money $newmoney");;;;}else{fhem("set money 0");;;; fhem("set run_challenge off");;;;}}}
+attr n_challange disable 1
+define money dummy
+define UC1StatusChallange dummy
+attr UC1StatusChallange group Fach_ist
+define UC2StatusChallange dummy
+attr UC2StatusChallange group Fach_ist
+define UC3StatusChallange dummy
+attr UC3StatusChallange group Fach_ist
+define score dummy
+define game HTTPSRV game ./www/game Game
+define resetChallenge dummy
+attr resetChallenge webCmd on
+define n_resetChallenge notify resetChallenge:on {fhem("set money 100");;;; fhem("set score 0");;;; fhem("set gameOver '");;;; fhem("set showGameOver off");;;; fhem("set Challenge off");;;; fhem("set moneySound off");;;; fhem("set gameoverSound off");;;;}
+define run_challenge at +*00:00:01 {my $moneyOLD=Value("money");; if(Value("UC1StatusChallange") eq Value("sollUC1") && Value("UC2StatusChallange") eq Value("sollUC2") && Value("UC3StatusChallange") eq Value("sollUC3")&& Value("UC4StatusChallange") eq Value("sollUC4")){my $newSollUC1 = int(rand(2));;;; my $newSollUC2 = int(rand(2));;;; my $newSollUC3 = int(rand(2));;;; my $newSollUC4 = int(rand(2));;;; my $newmoney = $moneyOLD+4;;;; fhem("set money $newmoney");;;; fhem("set sollUC1 $newSollUC1");;;; fhem("set sollUC2 $newSollUC2");;;; fhem("set sollUC3 $newSollUC3");;;; fhem("set sollUC4 $newSollUC4");;;;fhem("set moneySound on");;;; my $newScore=Value("score")+1;;;; fhem("set score $newScore");;;;} else {my $newmoney = $moneyOLD-3;;;; if($newmoney >=0) {fhem("set money $newmoney");;;;}else{fhem("set money 0");;;; fhem("set run_challenge off");;;; fhem("set Challenge off");;;; fhem("set gameOver game over");;;; fhem("set showGameOver on");;;; fhem("set gameoverSound on");;;;}}}
+attr run_challenge disable 1
+define n_challenge_switch notify Challenge:.* {if($EVENT eq "on"){fhem("ATTR run_challenge disable 0");;;;fhem("set resetChallenge on");;;; fhem("set gameOver '");;;; fhem("set showGameOver off");;;;} else{fhem("ATTR run_challenge disable 1");;;;}}
+define UC4 dummy
+attr UC4 group Sensor
+attr UC4 stateFormat Abstand
+attr UC4 userReadings Abstand
+define at_UC4 at +*00:00:01 {system 'sudo /usr/bin/python /opt/fhem/FHEM/UC4.sh &'}\
+
+attr at_UC4 disable 1
+define UC4Status dummy
+attr UC4Status group normal
+define n_UC4Status notify UC4:.* {my $temp=ReadingsVal("UC4","Abstand","");; if($temp <= 40){ fhem("set UC4Status full");;;; fhem("set UC4StatusChallange 1");;;;} else {fhem("set UC4Status empty");;;; fhem("set UC4StatusChallange 0");;;;}}
+define UC4StatusChallange dummy
+attr UC4StatusChallange group Fach_ist
+define sollUC4 dummy
+attr sollUC4 group Fach_soll
+define gameOver dummy
+attr gameOver webCmd :
+define showGameOver dummy
+attr showGameOver webCmd on:off
+define countdown dummy
+attr countdown room Game
+define at_countdown at +*00:00:01 {my $wert = Value("countdown")-1;;;; fhem("set countdown $wert");;;; if($wert eq 0){fhem("attr at_countdown disable 1");;;; fhem("set Challenge on");;;; fhem("set showCountdown off");;;;}}
+attr at_countdown disable 1
+define startChallenge dummy
+attr startChallenge room Game
+attr startChallenge webCmd on
+define n_startChallenge notify startChallenge:on {fhem("set Challenge off");;;; fhem("set resetChallenge on");;;; fhem("attr at_countdown disable 0");;;; fhem("set countdown 4");;;; fhem("set showCountdown on");;;; fhem("set UC_Switch on");;;; fhem("set startSound on");;;;}
+define showCountdown dummy
+attr showCountdown webCmd on:off
+define startSound dummy
+attr startSound room Game
+attr startSound webCmd on:off
+define gameoverSound dummy
+attr gameoverSound room Game
+attr gameoverSound webCmd on:off
+define moneySound dummy
+attr moneySound room Game
+attr moneySound webCmd on:off

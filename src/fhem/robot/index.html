@@ -53,12 +53,13 @@
 <body>
 
 <div class="gridster">
-<h1>Video</h1>
-<div data-type="iframe"
-    data-src="http://localhost:52123/?"
-    data-height="420"
-    data-width="380"
-></div>
+<h1>Image</h1>
+<!-- image.jpg has to be in /opt/fhem/www/tablet; other locations with URI did not work -->
+<div data-type="image"
+     data-size="1024px"
+     data-url="image.jpg"
+     data-refresh="10"
+</div>
 </div>
 </body>
 </html>

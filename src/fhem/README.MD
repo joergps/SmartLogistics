@@ -47,3 +47,6 @@ Trage folgende Zeile in `/etc/sudoers` ein:
 ```bash
 fhem ALL=(ALL) NOPASSWD: ALL
 ```
+
+## Kamera
+/boot/config.txt: Zeile 'GPIO_MEM=128' zu 'GPIO_MEM=144' ersetzen
