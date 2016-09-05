@@ -33,9 +33,11 @@
     <link rel="stylesheet" href="/fhem/tablet/lib/font-awesome.min.css" />
     <link rel="stylesheet" href="/fhem/tablet/lib/jquery.toast.min.css" />
 
+    <link rel="stylesheet" href="/fhem/tablet/css/my.css" />
+
     <!-- define your personal style here, it wont be overwritten  -->
     <!-- link rel="stylesheet" href="/fhem/tablet/css/fhem-green-ui.css" / -->
-    <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui-user.css" />
+   <!-- <link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui-user.css" />-->
 
     <script src="/fhem/pgm2/jquery.min.js" defer></script>
     <script src="/fhem/tablet/lib/jquery.toast.min.js" defer></script>
@@ -48,18 +50,31 @@
     <script src="/fhem/pgm2/webviewcontrol.js" defer></script>
     <!-- End for WebViewControl -->
 
-    <title>FHEM-Tablet-UI</title>
+<!-- Text to speacg: https://text-to-speech-demo.mybluemix.net/-->
+
+    <title>sm@rtLogistic</title>
 </head>
 <body>
-
 <div class="gridster">
-<h1>Image</h1>
-<!-- image.jpg has to be in /opt/fhem/www/tablet; other locations with URI did not work -->
-<div data-type="image"
-     data-size="1024px"
-     data-url="image.jpg"
-     data-refresh="10"
+<ul style="display:none">
+        <div class="cell"  data-type="symbol" data-device='test' data-states='["empty","full"]' data-colors='["green","#fff"]' data-icons='["","fa-archive"]'></div>
+        <div data-type="playstream" data-icon="fa-windows" data-url="http://myberry:8083/fhem/tablet/sounds/message1.mp3" data-device="play_message1" data-get-on="on" data-get-off="off" data-volume="100"></div>
+        <div data-type="playstream" data-icon="fa-windows" data-url="http://myberry:8083/fhem/tablet/sounds/message2.mp3" data-device="play_message2" data-get-on="on" data-get-off="off" data-volume="100"></div>
+        <div data-type="playstream" data-icon="fa-windows" data-url="http://myberry:8083/fhem/tablet/sounds/message3.mp3" data-device="play_message3" data-get-on="on" data-get-off="off" data-volume="100"></div>
+</ul>
 </div>
-</div>
+
+
+	<div class="title" data-type="label">sm@rtLogistics - Robi</div>
+
+	<div id="sprechblase">
+        <div class="message" data-type="label" data-device='show_message'></div>
+  </div>
+  <div id="cameraImage">
+        <div data-type="image" 
+             data-url='/fhem/tablet/images/image.jpg'
+             data-size="768px"></div>
+  </div>
+	<img class="rob_image" src="/fhem/tablet/images/robi.png">
 </body>
 </html>

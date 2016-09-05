@@ -6,7 +6,8 @@ body{
 .rob_image{
 	margin-left:10%;
 	bottom: 0;
-    position: absolute;
+  position: absolute;
+  width: 700px;
 }
 
 .message{
@@ -22,12 +23,35 @@ body{
 	font-weight: 100;
 
 }
+
+#cameraImage {  
+
+  position: absolute;
+  right: 9%;
+  margin-top:200px;
+  /* image size: 768x576 */
+  min-width:768px;
+  /* tablet-ui does not scale image properly, 
+     so cut at 550px height */
+  max-height: 550px;
+  font-size: 1.8em;
+  font-family: helvetica, tahoma;
+  border: 4px solid #2651A6;
+ 
+  -webkit-border-radius: 20px;  
+  -moz-border-radius: 20px;  
+  border-radius: 20px;
+  text-align: center;  
+  background: #fff;
+  overflow: hidden
+}
+
 #sprechblase {  
 
     position: absolute;
 
   right: 9%;
-  margin-top:130px;
+  margin-top:15px;
   width: 30%;  
   min-height:135px;
   font-size: 1.8em;
