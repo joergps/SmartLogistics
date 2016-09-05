@@ -1,0 +1,66 @@
+body{
+	background-color: #fff;
+	color:#000;
+}
+
+.rob_image{
+	margin-left:10%;
+	bottom: 0;
+    position: absolute;
+}
+
+.message{
+	text-align: center;
+	font-size: 50px;
+		font-weight: 200;
+}
+
+.title{
+	text-align: center;
+	font-size: 80px;
+	margin-top: 40px;
+	font-weight: 100;
+
+}
+#sprechblase {  
+
+    position: absolute;
+
+  right: 9%;
+  margin-top:130px;
+  width: 30%;  
+  min-height:135px;
+  font-size: 1.8em;
+  font-family: helvetica, tahoma;
+  border: 4px solid #2651A6;
+ 
+  -webkit-border-radius: 20px;  
+  -moz-border-radius: 20px;  
+  border-radius: 20px;
+  text-align: center;  
+  background: #fff;
+  padding: 20px;
+ }
+
+ #sprechblase:before {  
+  content: ' ';  
+  position: absolute;  
+  width: 0;  
+  height: 0;  
+  left: -80px;  
+  top: 80px;  
+  border: 40px solid;  
+  border-color: #2651A6 #2651A6 transparent  transparent ;  
+  }
+
+  #sprechblase:after {  
+  content: ' ';  
+  position: absolute;  
+  width: 0;  
+  height: 0;  
+  left: -70px;  
+  top: 84px;  
+  border: 35px solid;  
+  border-color: #fff #fff transparent transparent ;  
+  }
+
