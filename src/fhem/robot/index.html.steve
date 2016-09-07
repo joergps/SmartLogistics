@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <!--
      /* FHEM tablet ui */
      /*
@@ -25,7 +24,6 @@
     <meta name="widget_base_height" content="131">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="Cache-control" content="no-chache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="longpoll" content="1"> <!-- 1=longpoll;0=shortpoll every 30sec -->
     <meta name="debug" content="0"> <!-- 1=output to console;0=no output -->
@@ -57,18 +55,6 @@
     <title>sm@rtLogistic</title>
 </head>
 <body>
-<script src="/fhem/pgm2/jquery.min.js"></script>
-<script>
-  <!-- Force picture not to be cached -->
-  <!-- see: http://stackoverflow.com/questions/7337113/refresh-img-in-jquery-periodically -->
-  <!-- see: http://stackoverflow.com/questions/126772/how-to-force-a-web-browser-not-to-cache-images -->
-  function refreshCameraPicture(){
-    var d = new Date();
-    $("#idCameraPicture").attr("src", "/fhem/tablet/images/image.jpg?" + d.getTime());
-  }
-  window.setInterval(refreshCameraPicture,500);
-  refreshCameraPicture()
-</script>
 <div class="gridster">
 <ul style="display:none">
         <div class="cell"  data-type="symbol" data-device='test' data-states='["empty","full"]' data-colors='["green","#fff"]' data-icons='["","fa-archive"]'></div>
@@ -83,13 +69,7 @@
 
 	<div id="sprechblase">
         <div class="message" data-type="label" data-device='show_message'></div>
-  </div>
-  <div id="cameraImage">
-    <img id="idCameraPicture" src='temp.jpg'></img>
-        <!-- div data-type="image" 
-             data-url='/fhem/tablet/images/image.jpg'
-             data-size="768px"></div -->
-  </div>
+    </div>
 	<img class="rob_image" src="/fhem/tablet/images/robi.png">
 </body>
 </html>
