@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+		 /* FHEM tablet ui */
+		 /*
+		 * Just another dashboard for FHEM
+		 *
+		 * Version: 1.4.4
+		 * Requires: jQuery v1.7+, font-awesome, jquery.gridster, jquery.toast
+		 * URL: https://github.com/knowthelist/fhem-tablet-ui
+		 *
+		 * Copyright (c) 2015 Mario Stephan <mstephan@shared-files.de>
+		 * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+		 *
+		 * - create a new folder named 'tablet' in /<fhem-path>/www
+		 * - copy all files incl. sub folders into /<fhem-path>/www/tablet
+		 * - add 'define tablet_ui HTTPSRV tablet ./www/tablet Tablet Frontend' in fhem.cfg
+		 * - Tadaaa! A new fhem ui in http://<fhem-url>:8083/fhem/tablet/
+		 */
+		-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="widget_base_width" content="116">
+		<meta name="widget_base_height" content="131">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="longpoll" content="1"> <!-- 1=longpoll;0=shortpoll every 30sec -->
+		<meta name="debug" content="0"> <!-- 1=output to console;0=no output -->
+		<meta name='toast' content='0'> <!-- 1=on show messages; 0=off no messages will be shown -->
+		<meta name='gridster_disable' content='1'> <!-- 0= drag & Drop on; 1= no drag & drop-->
+
+		<link rel="stylesheet" href="/fhem/controller/lib/jquery.gridster.min.css" />
+		<link rel="stylesheet" href="/fhem/controller/css/fhem-tablet-ui.css" />
+		<link rel="stylesheet" href="/fhem/controller/lib/font-awesome.min.css" />
+		<link rel="stylesheet" href="/fhem/controller/lib/jquery.toast.min.css" />
+		
+		<!-- define your personal style here, it wont be overwritten  -->
+		<!-- link rel="stylesheet" href="/fhem/tablet/css/fhem-green-ui.css" / -->
+		<!--<link rel="stylesheet" href="/fhem/tablet/css/fhem-tablet-ui-user.css" />-->
+
+		<script src="/fhem/pgm2/jquery.min.js" defer></script>
+		<script src="/fhem/controller/lib/jquery.toast.min.js" defer></script>
+		<script src="/fhem/controller/lib/jquery.gridster.min.js" defer></script>
+		<script src="/fhem/controller/js/fhem-tablet-ui.min.js" defer></script>
+
+	
+		<!-- Remove this line to enable for usage with WebViewControl
+		<script defer>var wvcDevices = {'12345': 'Tablet'}; var wvcUserCssFile="webviewcontrol.css"</script>
+		<script src="/fhem/pgm2/cordova-2.3.0.js" defer></script>
+		<script src="/fhem/pgm2/webviewcontrol.js" defer></script>
+		End for WebViewControl -->
+
+		<title>controller</title>
+	</head>
+	<body>
+		
+		<div class="gridster">
+			<ul>
+				<center>
+					<a href="http://osx-server.fritz.box:8093/fhem/controller" style="color:white !important;"> 
+						<div data-type="label" class="cell bigger thin  ">Controller</div>
+					</a>
+					
+					<div style="margin-top:50px;">
+						<div data-type="button" data-url-xhr="http://myberry:8083/fhem?detail=startChallenge&cmd.startChallenge=set%20startChallenge%20on" data-icon="fa-play" class="cell fa-5x"></div>
+						<div data-type="link" data-url-xhr="http://myberry:8083/fhem?detail=startChallenge&cmd.startChallenge=set%20startChallenge%20on" style="color:white !important;"class="cell big  narrow">Spiel starten</div>
+					</div>
+					
+					<div style="margin-top:50px;">
+						<div data-type="button" data-url-xhr="http://myberry:8083/fhem?detail=resetChallenge&cmd.resetChallenge=set%20resetChallenge%20on" data-icon="fa-play" class="cell fa-5x"></div>
+						<div data-type="link" data-url-xhr="http://myberry:8083/fhem?detail=resetChallenge&cmd.resetChallenge=set%20resetChallenge%20on" style="color:white !important;"class="cell big  narrow">Reset Game</div>
+					</div>
+				</center>			
+			</ul>
+		</div>
+	</body>
+</html>
+
+

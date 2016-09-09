@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+     /* FHEM tablet ui */
+     /*
+     * Just another dashboard for FHEM
+     *
+     * Version: 1.4.4
+     * Requires: jQuery v1.7+, font-awesome, jquery.gridster, jquery.toast
+     * URL: https://github.com/knowthelist/fhem-tablet-ui
+     *
+     * Copyright (c) 2015 Mario Stephan <mstephan@shared-files.de>
+     * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+     *
+     * - create a new folder named 'tablet' in /<fhem-path>/www
+     * - copy all files incl. sub folders into /<fhem-path>/www/tablet
+     * - add 'define tablet_ui HTTPSRV tablet ./www/tablet Tablet Frontend' in fhem.cfg
+     * - Tadaaa! A new fhem ui in http://<fhem-url>:8083/fhem/tablet/
+     */
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="widget_base_width" content="300">
+    <meta name="widget_base_height" content="40">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="longpoll" content="1"> <!-- 1=longpoll;0=shortpoll every 30sec -->
+    <meta name="debug" content="0"> <!-- 1=output to console;0=no output -->
+
+    <meta name="gridster_disable" content="0">
+    <meta name="toast" content="0">
+
+    <link rel="stylesheet" href="/fhem/mobile/lib/jquery.gridster.min.css" />
+    <link rel="stylesheet" href="/fhem/mobile/css/fhem-tablet-ui.css" />
+    <link rel="stylesheet" href="/fhem/mobile/lib/font-awesome.min.css" />
+    <link rel="stylesheet" href="/fhem/mobile/lib/jquery.toast.min.css" />
+
+    <link rel="stylesheet" href="/fhem/mobile/css/my.css" />
+
+    <!-- define your personal style here, it wont be overwritten  -->
+    <!-- link rel="stylesheet" href="/fhem/mobile/css/fhem-green-ui.css" / -->
+   <!-- <link rel="stylesheet" href="/fhem/mobile/css/fhem-tablet-ui-user.css" />-->
+
+    <script src="/fhem/pgm2/jquery.min.js" defer></script>
+    <script src="/fhem/mobile/lib/jquery.toast.min.js" defer></script>
+    <script src="/fhem/mobile/lib/jquery.gridster.min.js" defer></script>
+    <script src="/fhem/mobile/js/fhem-tablet-ui.min.js" defer></script>
+
+    <!-- Remove this line to enable for usage with WebViewControl
+    <script defer>var wvcDevices = {'12345': 'Tablet'}; var wvcUserCssFile="webviewcontrol.css"</script>
+    <script src="/fhem/pgm2/cordova-2.3.0.js" defer></script>
+    <script src="/fhem/pgm2/webviewcontrol.js" defer></script>
+    <!-- End for WebViewControl -->
+
+    <title>sm@rtLogistic</title>
+</head>
+<body>
+    <div class="gridster">
+        <ul>
+            <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" class="header">
+                 <div class="big thin menuhead" data-type="label" style="color:#585858;"><span style="font-weight:300;">smart</span>Logistics</div>
+            </li>  
+            <li data-row="2" data-col="1" data-sizex="1" data-sizey="2" style="box-shadow: 1px 1px 1px grey; background-color: #F2F2F2; border:1px; border-color:lightgrey;">
+                <div>
+                    <div data-type="popup" data-height="140px" data-width="300px" data-device="showMessage1" data-get-on="on" data-get-off="off">
+                        <div class="left">
+                            <div class="cell inline" data-type="symbol" data-icon="fa-cube" style="margin-right: -2px!important;"></div>
+                            <div class="cell inline" data-type="label" style="font-weight:600;">New Package at 106/300</div>
+                        </div>
+                        <div class="dialog">
+                            <header>Important notice - route changed</header>
+                            <div class="left">
+                                <div class="cell inline fa-4x" data-type="symbol" data-off-color="darkred" data-icon="fa-cube" style="margin-right: -2px!important;"></div>
+                                <div class="cell inline" data-type="label" style="color:darkred; font-weight:600; font-size:20px;">New Package<br><span style="font-weight:200;">at location: 100-001</span></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="cell inline" data-type="label">Collect new package at <span style="font-weight:600;">station 106 - rack 300 </span></div>
+                </div>
+            </li>
+            <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+                 <div class="left" style="color:grey">
+
+                     <div class="cell inline" data-type="symbol" data-off-color="lightgrey" data-icon='fa-ellipsis-v' style="margin-right: -16px!important;"></div>
+                     <div class="cell inline" data-type="label">Route to station 123</div>
+                </div>
+            </li> 
+            <li data-row="4" data-col="1" data-sizex="1" data-sizey="2" style="box-shadow: 1px 1px 1px grey; background-color: #F2F2F2; border:1px; border-color:lightgrey;">
+                <div>
+                    <div class="left">
+                        <div class="cell inline" data-type="symbol" data-icon="fa-bus" style="margin-right: -2px!important;"></div>
+                        <div class="cell inline" data-type="label" style="font-weight:600;">New Delivery at 123/100</div>
+                    </div>
+                    <div class="cell inline" data-type="label">Collect new package at <span style="font-weight:600;">station 123 - rack 100 </span></div>
+                </div>
+            </li>        
+            <li data-row="5" data-col="1" data-sizex="1" data-sizey="1">
+                 <div class="left" style="color:grey">
+                     <div class="cell inline" data-type="symbol" data-off-color="lightgrey" data-icon='fa-ellipsis-v' style="margin-right: -16px!important;"></div>
+                     <div class="cell inline" data-type="label">Route to station 129</div>
+                </div>
+            </li> 
+            <li data-row="6" data-col="1" data-sizex="1" data-sizey="2" style="box-shadow: 1px 1px 1px grey; background-color: #F2F2F2; border:1px; border-color:lightgrey;">
+                <div>
+                    <div class="left">
+                        <div class="cell inline" data-type="symbol" data-icon="fa-cubes" style="margin-right: -2px!important;"></div>
+                        <div class="cell inline" data-type="label" style="font-weight:600;">New Packages at 129/500</div>
+                    </div>
+                    <div class="cell inline" data-type="label">Collect new package at <span style="font-weight:600;">station 129 - rack 500 </span></div>
+                </div>
+            </li> 
+            <li data-row="7" data-col="1" data-sizex="1" data-sizey="1">
+                 <div class="left" style="color:grey">
+                     <div class="cell inline" data-type="symbol" data-off-color="lightgrey" data-icon='fa-ellipsis-v' style="margin-right: -16px!important;"></div>
+                     <div class="cell inline" data-type="label">Route to station 321</div>
+                </div>
+            </li> 
+            <li data-row="8" data-col="1" data-sizex="1" data-sizey="2" style="box-shadow: 1px 1px 1px grey; background-color: #F2F2F2; border:1px; border-color:lightgrey;">
+                <div>
+                    <div class="left">
+                        <div class="cell inline" data-type="symbol" data-icon="fa-cube" style="margin-right: -2px!important;"></div>
+                        <div class="cell inline" data-type="label" style="font-weight:600;">New Package at 321/123</div>
+                    </div>
+                    <div class="cell inline" data-type="label">Collect new package at <span style="font-weight:600;">station 321 - rack 123 </span></div>
+                </div>
+            </li>  
+            <li data-row="9" data-col="1" data-sizex="1" data-sizey="1" >
+                <div data-type="playstream" data-icon="fa-cube" data-url="http://myberry:8083/fhem/mobile/sounds/sms.mp3" data-device="showMessage1" data-get-on="on" data-get-off="off" data-volume="100"></div>
+            </li>     
+        </ul>
+    </div>
+</body>
+</html>

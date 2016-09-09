@@ -1,0 +1,146 @@
+body{
+	background-color: #fff;
+	color:#000;
+
+}
+
+.rob_image{
+	margin-left:10%;
+	bottom: 0;
+    position: absolute;
+}
+
+.message{
+	text-align: center;
+	font-size: 50px;
+		font-weight: 200;
+}
+
+.title{
+	text-align: center;
+	font-size: 80px;
+	margin-top: 40px;
+	font-weight: 100;
+
+}
+
+.subtitle{
+	text-align: center;
+	font-size: 40px;
+	font-weight: 300;
+	color:lightgrey;
+	padding-bottom: 30px;
+}
+
+.rack{
+	border:5px;
+	border-color: red;
+}
+
+.racktable{
+	margin-left: auto; 
+	margin-right: auto;
+
+
+}
+.racktitle{
+	text-align: center;
+	font-weight: 400;
+	background-color: lightgrey;
+	width: 200px;
+	font-size: 20px;
+
+}
+.tablespace{
+	width:20px;
+	height: 20px;
+	background-color: #fff;
+}
+
+.rackspot{
+
+}
+
+.rackspotrow{
+	height: 200px;
+	width: 200px;
+}
+
+#shadow{
+	/*box-shadow: 1px 1px 1px #999;*/
+}
+
+td{
+	border-spacing: 10px;
+	background-color: grey;
+}
+
+#sprechblase {  
+
+    position: absolute;
+
+  right: 9%;
+  margin-top:130px;
+  width: 30%;  
+  min-height:135px;
+  font-size: 1.8em;
+  font-family: helvetica, tahoma;
+  border: 4px solid #2651A6;
+ 
+  -webkit-border-radius: 20px;  
+  -moz-border-radius: 20px;  
+  border-radius: 20px;
+  text-align: center;  
+  background: #fff;
+  padding: 20px;
+ }
+
+ #sprechblase:before {  
+  content: ' ';  
+  position: absolute;  
+  width: 0;  
+  height: 0;  
+  left: -80px;  
+  top: 80px;  
+  border: 40px solid;  
+  border-color: #2651A6 #2651A6 transparent  transparent ;  
+  }
+
+  #sprechblase:after {  
+  content: ' ';  
+  position: absolute;  
+  width: 0;  
+  height: 0;  
+  left: -70px;  
+  top: 84px;  
+  border: 35px solid;  
+  border-color: #fff #fff transparent transparent ;  
+  }
+
+.fa-3x{
+	 font-size: 7em;
+}
+
+.gridster ul li {
+	background-color:#fff;
+}
+
+.gridster li header {
+    background: lightgrey none repeat scroll 0 0;
+    }
+.menuhead{
+	text-align: center;
+}
+.header{
+	background-color: #E6E6E6!important;
+	top: -8px!important;
+	left: -8px!important;
+	width: 375px!important;
+	margin-top: 0px!important;
+	padding-top: 4px!important;
+
+}
+
+.dialog {
+    background-color: #fff;
+    }
