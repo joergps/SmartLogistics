@@ -14,9 +14,12 @@
 # FHEM per Telnet: Port 7072
 #
 
+# run the script: script <FHEM UC ID> <TRIGGER GPIO> <ECHO GPIO>
+
 import time
 import RPi.GPIO as GPIO
 import os
+import sys
 
 # --------------------------------------------------------
 #                  Define some functions
@@ -37,16 +40,14 @@ def measure():
     distance = measure()
   return distance
 
-def measure_calibrate():
+def measure_average():
   # This function takes 3 measurements and
   # returns the average.
-  distance_sum = 0
-  messungen = 100
-  while messungen > -1:
-    messungen -= 1
-    distance_sum += measure()
-  
-  distance = distance_sum / 100
+  distance1 = measure()
+  distance2 = measure()
+  distance3 = measure()
+  distance_sum = distance1 + distance2 + distance3
+  distance = distance_sum / 3
   return distance
 
 # --------------------------------------------------------
@@ -54,10 +55,9 @@ def measure_calibrate():
 # --------------------------------------------------------
 # Use BCM GPIO references
 # instead of physical pin numbers
-
 GPIO.setmode(GPIO.BCM)
-GPIO_TRIGGER = 14   ####  evtl. GPIO anpassen 
-GPIO_ECHO    = 15   ####  evtl. GPIO anpassen
+GPIO_TRIGGER = int(sys.argv[2])   #### evtl. GPIO anpassen 
+GPIO_ECHO    = int(sys.argv[3])   #### evtl. GPIO anpassen
 GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
 GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
 GPIO.output(GPIO_TRIGGER, False)
@@ -65,10 +65,10 @@ GPIO.output(GPIO_TRIGGER, False)
 # --------------------------------------------------------
 #                Rueckgabe an FHEM
 # --------------------------------------------------------
-os.system('perl /opt/fhem/fhem.pl 7072 "setreading UC3 Kalibrierung 0"')
-distanceRet = "%.1f" % measure_calibrate() # fuer Mittelwert Messung
-#distanceRet = "%.1f" % measure()        # fuer einmalige Messung
+
+#distanceRet = "%.1f" % measure_average() # fuer Mittelwert Messung
+distanceRet = "%.1f" % measure()        # fuer einmalige Messung
 if float(distanceRet) <= 400:
-  os.system('perl /opt/fhem/fhem.pl 7072 "setreading UC3 Kalibrierung '+str(distanceRet)+'"')
-os.system('perl /opt/fhem/fhem.pl 7072 "set calibrate_UC3 off"')
+  os.system('perl /opt/fhem/fhem.pl 7072 "setreading '+str(sys.argv[1])+' Abstand '+str(distanceRet)+'"')
+  #os.system('perl /opt/fhem/fhem.pl 7072 "setreading UC1 Abstand '+str(distanceRet)+'"')
 GPIO.cleanup()

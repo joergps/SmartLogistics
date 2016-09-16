@@ -3,7 +3,7 @@
 208 Challenge state: off
 80 Challenge state: on
 59 UC1 .*
-26093 UC1 Abstand: .*
+26104 UC1 Abstand: .*
 8 UC1 Kalibrierung: .*
 6 UC1 Kalibrierung: calibrating
 1 UC1 hallo
@@ -11,43 +11,43 @@
 1 UC1 state: hallo
 1 UC1 state: test
 1 UC1 test
-22 UC1Status .*
+33 UC1Status .*
 10078 UC1Status empty
 13131 UC1Status full
-22 UC1Status state: .*
+33 UC1Status state: .*
 10078 UC1Status state: empty
 13131 UC1Status state: full
 12498 UC1StatusChallange .*
 12498 UC1StatusChallange state: .*
-15815 UC2 Abstand: .*
+15817 UC2 Abstand: .*
 2 UC2 Kalibrierung: .*
 1 UC2 Kalibrierung: calibrating
-17 UC2Status .*
+19 UC2Status .*
 7704 UC2Status empty
 5631 UC2Status full
-17 UC2Status state: .*
+19 UC2Status state: .*
 7704 UC2Status state: empty
 5631 UC2Status state: full
 9170 UC2StatusChallange .*
 9170 UC2StatusChallange state: .*
-26949 UC3 Abstand: .*
-2 UC3 Kalibrierung: .*
+26950 UC3 Abstand: .*
+5 UC3 Kalibrierung: .*
 1 UC3 Kalibrierung: calibrating
-17 UC3Status .*
+21 UC3Status .*
 9679 UC3Status empty
 15114 UC3Status full
-17 UC3Status state: .*
+21 UC3Status state: .*
 9679 UC3Status state: empty
 15114 UC3Status state: full
 12205 UC3StatusChallange .*
 12205 UC3StatusChallange state: .*
-11821 UC4 Abstand: .*
+11822 UC4 Abstand: .*
 3 UC4 Kalibrierung: .*
 1 UC4 Kalibrierung: calibrating
-21 UC4Status .*
+22 UC4Status .*
 9024 UC4Status empty
 2780 UC4Status full
-21 UC4Status state: .*
+22 UC4Status state: .*
 9024 UC4Status state: empty
 2780 UC4Status state: full
 11804 UC4StatusChallange .*
@@ -56,18 +56,18 @@
 103 UC_Switch on
 75 UC_Switch state: off
 103 UC_Switch state: on
-34521 at_UC1 Next: .*
-87 at_UC1 disabled
-34521 at_UC1 state: Next: .*
-87 at_UC1 state: disabled
+35070 at_UC1 Next: .*
+88 at_UC1 disabled
+35070 at_UC1 state: Next: .*
+88 at_UC1 state: disabled
 32209 at_UC2 Next: .*
 82 at_UC2 disabled
 32209 at_UC2 state: Next: .*
 82 at_UC2 state: disabled
 31098 at_UC3 Next: .*
-79 at_UC3 disabled
+80 at_UC3 disabled
 31098 at_UC3 state: Next: .*
-79 at_UC3 state: disabled
+80 at_UC3 state: disabled
 14685 at_UC4 Next: .*
 28 at_UC4 disabled
 14685 at_UC4 state: Next: .*
@@ -84,10 +84,10 @@
 2 calibrate_UC2 on
 2 calibrate_UC2 state: off
 2 calibrate_UC2 state: on
-1 calibrate_UC3 off
-2 calibrate_UC3 on
-1 calibrate_UC3 state: off
-2 calibrate_UC3 state: on
+3 calibrate_UC3 off
+3 calibrate_UC3 on
+3 calibrate_UC3 state: off
+3 calibrate_UC3 state: on
 2 calibrate_UC4 off
 2 calibrate_UC4 on
 2 calibrate_UC4 state: off
@@ -166,10 +166,10 @@
 20 showGameOver on
 273 showGameOver state: off
 20 showGameOver state: on
-37 showMessage1 off
-141 showMessage1 on
-37 showMessage1 state: off
-141 showMessage1 state: on
+42 showMessage1 off
+146 showMessage1 on
+42 showMessage1 state: off
+146 showMessage1 state: on
 3198 show_message Hi komm mir doch näher.
 11792 show_message Schau mal nach rechts. :-)
 4599 show_message So ist es schon besser.
