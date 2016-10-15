@@ -1,9 +1,9 @@
-208 Challenge off
+211 Challenge off
 80 Challenge on
-208 Challenge state: off
+211 Challenge state: off
 80 Challenge state: on
 59 UC1 .*
-26104 UC1 Abstand: .*
+26729 UC1 Abstand: .*
 8 UC1 Kalibrierung: .*
 6 UC1 Kalibrierung: calibrating
 1 UC1 hallo
@@ -11,67 +11,91 @@
 1 UC1 state: hallo
 1 UC1 state: test
 1 UC1 test
-33 UC1Status .*
+658 UC1Status .*
 10078 UC1Status empty
 13131 UC1Status full
-33 UC1Status state: .*
+658 UC1Status state: .*
 10078 UC1Status state: empty
 13131 UC1Status state: full
 12498 UC1StatusChallange .*
 12498 UC1StatusChallange state: .*
-15817 UC2 Abstand: .*
+16407 UC2 Abstand: .*
+1 UC2 Echo-GPIO: .*
 2 UC2 Kalibrierung: .*
 1 UC2 Kalibrierung: calibrating
-19 UC2Status .*
+1 UC2 Trigger-GPIO: .*
+611 UC2Status .*
 7704 UC2Status empty
 5631 UC2Status full
-19 UC2Status state: .*
+611 UC2Status state: .*
 7704 UC2Status state: empty
 5631 UC2Status state: full
 9170 UC2StatusChallange .*
 9170 UC2StatusChallange state: .*
-26950 UC3 Abstand: .*
+26956 UC3 Abstand: .*
+1 UC3 Echo-GPIO: .*
 5 UC3 Kalibrierung: .*
 1 UC3 Kalibrierung: calibrating
-21 UC3Status .*
+1 UC3 Trigger-GPIO: .*
+29 UC3Status .*
 9679 UC3Status empty
 15114 UC3Status full
-21 UC3Status state: .*
+29 UC3Status state: .*
 9679 UC3Status state: empty
 15114 UC3Status state: full
 12205 UC3StatusChallange .*
 12205 UC3StatusChallange state: .*
-11822 UC4 Abstand: .*
+11914 UC4 Abstand: .*
+1 UC4 Echo-GPIO: .*
 3 UC4 Kalibrierung: .*
 1 UC4 Kalibrierung: calibrating
-22 UC4Status .*
+1 UC4 Trigger-GPIO: .*
+116 UC4Status .*
 9024 UC4Status empty
 2780 UC4Status full
-22 UC4Status state: .*
+116 UC4Status state: .*
 9024 UC4Status state: empty
 2780 UC4Status state: full
 11804 UC4StatusChallange .*
 11804 UC4StatusChallange state: .*
-75 UC_Switch off
-103 UC_Switch on
-75 UC_Switch state: off
-103 UC_Switch state: on
-35070 at_UC1 Next: .*
-88 at_UC1 disabled
-35070 at_UC1 state: Next: .*
-88 at_UC1 state: disabled
-32209 at_UC2 Next: .*
-82 at_UC2 disabled
-32209 at_UC2 state: Next: .*
-82 at_UC2 state: disabled
-31098 at_UC3 Next: .*
-80 at_UC3 disabled
-31098 at_UC3 state: Next: .*
-80 at_UC3 state: disabled
-14685 at_UC4 Next: .*
-28 at_UC4 disabled
-14685 at_UC4 state: Next: .*
-28 at_UC4 state: disabled
+1 UC5 .*
+1 UC5 Abstand: .*
+1 UC5 state: .*
+3 UC5Status .*
+3 UC5Status state: .*
+1 UC6 .*
+1 UC6 Abstand: .*
+1 UC6 state: .*
+3 UC6Status .*
+3 UC6Status state: .*
+78 UC_Switch off
+104 UC_Switch on
+78 UC_Switch state: off
+104 UC_Switch state: on
+36322 at_UC1 Next: .*
+91 at_UC1 disabled
+36322 at_UC1 state: Next: .*
+91 at_UC1 state: disabled
+33461 at_UC2 Next: .*
+85 at_UC2 disabled
+33461 at_UC2 state: Next: .*
+85 at_UC2 state: disabled
+31332 at_UC3 Next: .*
+83 at_UC3 disabled
+31332 at_UC3 state: Next: .*
+83 at_UC3 state: disabled
+14918 at_UC4 Next: .*
+31 at_UC4 disabled
+14918 at_UC4 state: Next: .*
+31 at_UC4 state: disabled
+233 at_UC5 Next: .*
+4 at_UC5 disabled
+233 at_UC5 state: Next: .*
+4 at_UC5 state: disabled
+233 at_UC6 Next: .*
+4 at_UC6 disabled
+233 at_UC6 state: Next: .*
+4 at_UC6 state: disabled
 422 at_countdown Next: .*
 52 at_countdown disabled
 422 at_countdown state: Next: .*
@@ -92,29 +116,37 @@
 2 calibrate_UC4 on
 2 calibrate_UC4 state: off
 2 calibrate_UC4 state: on
+1 calibrate_UC5 off
+1 calibrate_UC5 on
+1 calibrate_UC5 state: off
+1 calibrate_UC5 state: on
+1 calibrate_UC6 off
+1 calibrate_UC6 on
+1 calibrate_UC6 state: off
+1 calibrate_UC6 state: on
 144 countdown -.*
 245 countdown .*
 144 countdown state: -.*
 245 countdown state: .*
 26 countdown state: §wert
 26 countdown §wert
-285 gameOver '
+286 gameOver '
 3 gameOver color: #ff0000
 6 gameOver color: #ffffff
-21 gameOver game over
-285 gameOver state: '
-21 gameOver state: game over
-162 gameoverSound off
-17 gameoverSound on
-162 gameoverSound state: off
-17 gameoverSound state: on
+23 gameOver game over
+286 gameOver state: '
+23 gameOver state: game over
+163 gameoverSound off
+19 gameoverSound on
+163 gameoverSound state: off
+19 gameoverSound state: on
 1269 money -.*
-2767 money .*
+2794 money .*
 1269 money state: -.*
-2767 money state: .*
-161 moneySound off
+2794 money state: .*
+162 moneySound off
 94 moneySound on
-161 moneySound state: off
+162 moneySound state: off
 94 moneySound state: on
 11 n_UC1Status active
 11 n_UC1Status state: active
@@ -133,7 +165,9 @@
 1 n_distance_message active
 1 n_distance_message state: active
 15 n_message1 active
+1 n_message1 disabled
 15 n_message1 state: active
+1 n_message1 state: disabled
 7 n_resetChallenge active
 7 n_resetChallenge state: active
 7 n_startChallenge active
@@ -150,26 +184,26 @@
 11792 play_message3 on
 7811 play_message3 state: off
 11792 play_message3 state: on
-220 resetChallenge on
-220 resetChallenge state: on
-2852 run_challenge Next: .*
-200 run_challenge disabled
-2852 run_challenge state: Next: .*
-200 run_challenge state: disabled
-410 score .*
-410 score state: .*
+221 resetChallenge on
+221 resetChallenge state: on
+2876 run_challenge Next: .*
+203 run_challenge disabled
+2876 run_challenge state: Next: .*
+203 run_challenge state: disabled
+411 score .*
+411 score state: .*
 48 showCountdown off
 51 showCountdown on
 48 showCountdown state: off
 51 showCountdown state: on
-273 showGameOver off
-20 showGameOver on
-273 showGameOver state: off
-20 showGameOver state: on
-42 showMessage1 off
-146 showMessage1 on
-42 showMessage1 state: off
-146 showMessage1 state: on
+274 showGameOver off
+22 showGameOver on
+274 showGameOver state: off
+22 showGameOver state: on
+44 showMessage1 off
+148 showMessage1 on
+44 showMessage1 state: off
+148 showMessage1 state: on
 3198 show_message Hi komm mir doch näher.
 11792 show_message Schau mal nach rechts. :-)
 4599 show_message So ist es schon besser.
