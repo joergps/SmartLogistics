@@ -1,0 +1,5 @@
+MCP3008
+http://erik-bartmann.de/component/attachments/download/21.html
+
+PCF8591
+https://www.sunfounder.com/ad-da-converter-pcf8591-module.html 
