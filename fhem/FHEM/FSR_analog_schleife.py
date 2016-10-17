@@ -5,7 +5,8 @@ import time;
 import RPi.GPIO as GPIO
 import os
 
-print os.getpid()
+os.system('perl /opt/fhem/fhem.pl 7072 "setreading FSR PID '+str(os.getpid())+'"')
+
 
 GPIO.setmode(GPIO.BCM)  # GPIO-Pin Bezeichnungen verwenden
 GPIO.setwarnings(False) # Warnungen deaktivieren
@@ -58,15 +59,12 @@ PAUSE      = 0.5 # Anzeigepause
 setupGPIO(SCLK, MOSI, MISO, CS) # GPIO-Pin Setup
 
    
-#try:
-#	while True:
-#		print 'Analoger Wert: ', \
-#		readAnalogData(ADCChannel, SCLK, MOSI, MISO, CS, PAUSE)
-#
-#except KeyboardInterrupt:
-#	print '...Programm beendet.'
-#	GPIO.cleanup()
+try:
+    while True:
+        os.system('perl /opt/fhem/fhem.pl 7072 "setreading FSR Druck '+str(readAnalogData(ADCChannel, SCLK, MOSI, MISO, CS, PAUSE))+'"')
+finally:
+    GPIO.cleanup()
 
-result = readAnalogData(ADCChannel, SCLK, MOSI, MISO, CS, PAUSE)
-os.system('perl /opt/fhem/fhem.pl 7072 "setreading FSR Druck '+str(result)+'"')
-GPIO.cleanup()
+#result = readAnalogData(ADCChannel, SCLK, MOSI, MISO, CS, PAUSE)
+#os.system('perl /opt/fhem/fhem.pl 7072 "setreading FSR Druck '+str(result)+'"')
+#GPIO.cleanup()

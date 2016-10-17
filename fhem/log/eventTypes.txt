@@ -2,8 +2,15 @@
 80 Challenge on
 211 Challenge state: off
 80 Challenge state: on
+562 FSR Druck: .*
+561 FSRStatus .*
+561 FSRStatus state: .*
+4 Pilot_Switch off
+2 Pilot_Switch on
+4 Pilot_Switch state: off
+2 Pilot_Switch state: on
 59 UC1 .*
-26729 UC1 Abstand: .*
+26771 UC1 Abstand: .*
 8 UC1 Kalibrierung: .*
 6 UC1 Kalibrierung: calibrating
 1 UC1 hallo
@@ -11,23 +18,27 @@
 1 UC1 state: hallo
 1 UC1 state: test
 1 UC1 test
-658 UC1Status .*
+700 UC1Status .*
 10078 UC1Status empty
 13131 UC1Status full
-658 UC1Status state: .*
+700 UC1Status state: .*
 10078 UC1Status state: empty
 13131 UC1Status state: full
 12498 UC1StatusChallange .*
 12498 UC1StatusChallange state: .*
-16407 UC2 Abstand: .*
+4 UC1u2_Switch off
+1 UC1u2_Switch on
+4 UC1u2_Switch state: off
+1 UC1u2_Switch state: on
+16513 UC2 Abstand: .*
 1 UC2 Echo-GPIO: .*
 2 UC2 Kalibrierung: .*
 1 UC2 Kalibrierung: calibrating
 1 UC2 Trigger-GPIO: .*
-611 UC2Status .*
+717 UC2Status .*
 7704 UC2Status empty
 5631 UC2Status full
-611 UC2Status state: .*
+717 UC2Status state: .*
 7704 UC2Status state: empty
 5631 UC2Status state: full
 9170 UC2StatusChallange .*
@@ -72,14 +83,18 @@
 104 UC_Switch on
 78 UC_Switch state: off
 104 UC_Switch state: on
-36322 at_UC1 Next: .*
-91 at_UC1 disabled
-36322 at_UC1 state: Next: .*
-91 at_UC1 state: disabled
-33461 at_UC2 Next: .*
-85 at_UC2 disabled
-33461 at_UC2 state: Next: .*
-85 at_UC2 state: disabled
+700 at_FSR Next: .*
+4 at_FSR disabled
+700 at_FSR state: Next: .*
+4 at_FSR state: disabled
+36435 at_UC1 Next: .*
+96 at_UC1 disabled
+36435 at_UC1 state: Next: .*
+96 at_UC1 state: disabled
+33574 at_UC2 Next: .*
+90 at_UC2 disabled
+33574 at_UC2 state: Next: .*
+90 at_UC2 state: disabled
 31332 at_UC3 Next: .*
 83 at_UC3 disabled
 31332 at_UC3 state: Next: .*
@@ -150,6 +165,10 @@
 94 moneySound state: on
 11 n_UC1Status active
 11 n_UC1Status state: active
+2 n_UC1u2_off active
+2 n_UC1u2_off state: active
+2 n_UC1u2_on active
+2 n_UC1u2_on state: active
 3 n_UC2Status active
 3 n_UC2Status state: active
 3 n_UC3Status active
