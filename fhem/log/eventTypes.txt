@@ -2,15 +2,17 @@
 80 Challenge on
 211 Challenge state: off
 80 Challenge state: on
-562 FSR Druck: .*
-561 FSRStatus .*
-561 FSRStatus state: .*
+2123 FSR Druck: .*
+35 FSR PID: .*
+113 FSR PID: stopped
+2270 FSRStatus .*
+2270 FSRStatus state: .*
 4 Pilot_Switch off
 2 Pilot_Switch on
 4 Pilot_Switch state: off
 2 Pilot_Switch state: on
 59 UC1 .*
-26771 UC1 Abstand: .*
+30091 UC1 Abstand: .*
 8 UC1 Kalibrierung: .*
 6 UC1 Kalibrierung: calibrating
 1 UC1 hallo
@@ -18,10 +20,10 @@
 1 UC1 state: hallo
 1 UC1 state: test
 1 UC1 test
-700 UC1Status .*
+1314 UC1Status .*
 10078 UC1Status empty
 13131 UC1Status full
-700 UC1Status state: .*
+1314 UC1Status state: .*
 10078 UC1Status state: empty
 13131 UC1Status state: full
 12498 UC1StatusChallange .*
@@ -30,41 +32,41 @@
 1 UC1u2_Switch on
 4 UC1u2_Switch state: off
 1 UC1u2_Switch state: on
-16513 UC2 Abstand: .*
+19730 UC2 Abstand: .*
 1 UC2 Echo-GPIO: .*
 2 UC2 Kalibrierung: .*
 1 UC2 Kalibrierung: calibrating
 1 UC2 Trigger-GPIO: .*
-717 UC2Status .*
+1438 UC2Status .*
 7704 UC2Status empty
 5631 UC2Status full
-717 UC2Status state: .*
+1438 UC2Status state: .*
 7704 UC2Status state: empty
 5631 UC2Status state: full
 9170 UC2StatusChallange .*
 9170 UC2StatusChallange state: .*
-26956 UC3 Abstand: .*
+30236 UC3 Abstand: .*
 1 UC3 Echo-GPIO: .*
 5 UC3 Kalibrierung: .*
 1 UC3 Kalibrierung: calibrating
 1 UC3 Trigger-GPIO: .*
-29 UC3Status .*
+807 UC3Status .*
 9679 UC3Status empty
 15114 UC3Status full
-29 UC3Status state: .*
+807 UC3Status state: .*
 9679 UC3Status state: empty
 15114 UC3Status state: full
 12205 UC3StatusChallange .*
 12205 UC3StatusChallange state: .*
-11914 UC4 Abstand: .*
+15218 UC4 Abstand: .*
 1 UC4 Echo-GPIO: .*
 3 UC4 Kalibrierung: .*
 1 UC4 Kalibrierung: calibrating
 1 UC4 Trigger-GPIO: .*
-116 UC4Status .*
+897 UC4Status .*
 9024 UC4Status empty
 2780 UC4Status full
-116 UC4Status state: .*
+897 UC4Status state: .*
 9024 UC4Status state: empty
 2780 UC4Status state: full
 11804 UC4StatusChallange .*
@@ -79,38 +81,38 @@
 1 UC6 state: .*
 3 UC6Status .*
 3 UC6Status state: .*
-78 UC_Switch off
-104 UC_Switch on
-78 UC_Switch state: off
-104 UC_Switch state: on
+82 UC_Switch off
+108 UC_Switch on
+82 UC_Switch state: off
+108 UC_Switch state: on
 700 at_FSR Next: .*
 4 at_FSR disabled
 700 at_FSR state: Next: .*
 4 at_FSR state: disabled
-36435 at_UC1 Next: .*
-96 at_UC1 disabled
-36435 at_UC1 state: Next: .*
-96 at_UC1 state: disabled
-33574 at_UC2 Next: .*
-90 at_UC2 disabled
-33574 at_UC2 state: Next: .*
-90 at_UC2 state: disabled
-31332 at_UC3 Next: .*
-83 at_UC3 disabled
-31332 at_UC3 state: Next: .*
-83 at_UC3 state: disabled
-14918 at_UC4 Next: .*
-31 at_UC4 disabled
-14918 at_UC4 state: Next: .*
-31 at_UC4 state: disabled
-233 at_UC5 Next: .*
-4 at_UC5 disabled
-233 at_UC5 state: Next: .*
-4 at_UC5 state: disabled
-233 at_UC6 Next: .*
-4 at_UC6 disabled
-233 at_UC6 state: Next: .*
-4 at_UC6 state: disabled
+39804 at_UC1 Next: .*
+100 at_UC1 disabled
+39804 at_UC1 state: Next: .*
+100 at_UC1 state: disabled
+36943 at_UC2 Next: .*
+94 at_UC2 disabled
+36943 at_UC2 state: Next: .*
+94 at_UC2 state: disabled
+34701 at_UC3 Next: .*
+87 at_UC3 disabled
+34701 at_UC3 state: Next: .*
+87 at_UC3 state: disabled
+18287 at_UC4 Next: .*
+35 at_UC4 disabled
+18287 at_UC4 state: Next: .*
+35 at_UC4 state: disabled
+309 at_UC5 Next: .*
+10 at_UC5 disabled
+309 at_UC5 state: Next: .*
+10 at_UC5 state: disabled
+350 at_UC6 Next: .*
+10 at_UC6 disabled
+350 at_UC6 state: Next: .*
+10 at_UC6 state: disabled
 422 at_countdown Next: .*
 52 at_countdown disabled
 422 at_countdown state: Next: .*
@@ -175,8 +177,8 @@
 3 n_UC3Status state: active
 2 n_UC_off active
 2 n_UC_off state: active
-2 n_UC_on active
-2 n_UC_on state: active
+3 n_UC_on active
+3 n_UC_on state: active
 2 n_calibrate_UC1 active
 2 n_calibrate_UC1 state: active
 6 n_challenge_switch active
@@ -189,6 +191,10 @@
 1 n_message1 state: disabled
 7 n_resetChallenge active
 7 n_resetChallenge state: active
+14 n_runFSR_off active
+14 n_runFSR_off state: active
+4 n_runFSR_on active
+4 n_runFSR_on state: active
 7 n_startChallenge active
 7 n_startChallenge state: active
 16397 play_message1 off
@@ -205,6 +211,10 @@
 11792 play_message3 state: on
 221 resetChallenge on
 221 resetChallenge state: on
+35 runFSR off
+36 runFSR on
+35 runFSR state: off
+36 runFSR state: on
 2876 run_challenge Next: .*
 203 run_challenge disabled
 2876 run_challenge state: Next: .*
@@ -231,6 +241,16 @@
 11792 show_message state: Schau mal nach rechts. :-)
 4599 show_message state: So ist es schon besser.
 1 show_message state: hallo
+21 smartLogger UC1Status - UC1:.*
+39 smartLogger UC2Status - UC1:.*
+3 smartLogger UC3Status - UC1:.*
+7 smartLogger UC4Status - UC1:.*
+21 smartLogger state: UC1Status - UC1:.*
+39 smartLogger state: UC2Status - UC1:.*
+3 smartLogger state: UC3Status - UC1:.*
+7 smartLogger state: UC4Status - UC1:.*
+1 smartLogger state: test
+1 smartLogger test
 192 sollUC1 .*
 2 sollUC1 empty
 192 sollUC1 state: .*
@@ -251,3 +271,115 @@
 51 startSound on
 52 startSound state: off
 51 startSound state: on
+2 takePicture .*-00_UC2Status.jpg
+1 takePicture .*-01_UC2Status.jpg
+1 takePicture .*-02_UC4Status.jpg
+1 takePicture .*-03_UC4Status.jpg
+1 takePicture .*-04_UC2Status.jpg
+1 takePicture .*-05_UC2Status.jpg
+1 takePicture .*-07_UC2Status.jpg
+1 takePicture .*-08_UC2Status.jpg
+1 takePicture .*-10_UC1Status.jpg
+1 takePicture .*-10_UC2Status.jpg
+1 takePicture .*-11_UC1Status.jpg
+1 takePicture .*-11_UC2Status.jpg
+1 takePicture .*-15_UC1Status.jpg
+1 takePicture .*-16_UC1Status.jpg
+2 takePicture .*-16_UC2Status.jpg
+5 takePicture .*-17_UC1Status.jpg
+4 takePicture .*-18_UC1Status.jpg
+2 takePicture .*-18_UC2Status.jpg
+1 takePicture .*-19_UC1Status.jpg
+1 takePicture .*-19_UC4Status.jpg
+1 takePicture .*-24_UC4Status.jpg
+1 takePicture .*-25_UC1Status.jpg
+1 takePicture .*-25_UC2Status.jpg
+1 takePicture .*-25_UC3Status.jpg
+1 takePicture .*-25_UC4Status.jpg
+1 takePicture .*-26_UC2Status.jpg
+2 takePicture .*-28_UC2Status.jpg
+2 takePicture .*-29_UC2Status.jpg
+1 takePicture .*-30_UC2Status.jpg
+1 takePicture .*-31_UC2Status.jpg
+1 takePicture .*-32_UC2Status.jpg
+1 takePicture .*-33_UC2Status.jpg
+1 takePicture .*-34_UC2Status.jpg
+1 takePicture .*-37_UC2Status.jpg
+1 takePicture .*-38_UC2Status.jpg
+1 takePicture .*-39_UC1Status.jpg
+1 takePicture .*-39_UC2Status.jpg
+1 takePicture .*-39_UC3Status.jpg
+1 takePicture .*-39_UC4Status.jpg
+1 takePicture .*-40_UC1Status.jpg
+1 takePicture .*-40_UC2Status.jpg
+1 takePicture .*-40_UC3Status.jpg
+1 takePicture .*-40_UC4Status.jpg
+1 takePicture .*-44_UC2Status.jpg
+1 takePicture .*-45_UC2Status.jpg
+1 takePicture .*-46_UC2Status.jpg
+1 takePicture .*-50_UC1Status.jpg
+1 takePicture .*-51_UC1Status.jpg
+2 takePicture .*-52_UC2Status.jpg
+1 takePicture .*-53_UC1Status.jpg
+1 takePicture .*-53_UC2Status.jpg
+1 takePicture .*-54_UC1Status.jpg
+1 takePicture .*-55_UC2Status.jpg
+1 takePicture .*-56_UC2Status.jpg
+2 takePicture .*-57_UC2Status.jpg
+1 takePicture .*-59_UC2Status.jpg
+2 takePicture state: .*-00_UC2Status.jpg
+1 takePicture state: .*-01_UC2Status.jpg
+1 takePicture state: .*-02_UC4Status.jpg
+1 takePicture state: .*-03_UC4Status.jpg
+1 takePicture state: .*-04_UC2Status.jpg
+1 takePicture state: .*-05_UC2Status.jpg
+1 takePicture state: .*-07_UC2Status.jpg
+1 takePicture state: .*-08_UC2Status.jpg
+1 takePicture state: .*-10_UC1Status.jpg
+1 takePicture state: .*-10_UC2Status.jpg
+1 takePicture state: .*-11_UC1Status.jpg
+1 takePicture state: .*-11_UC2Status.jpg
+1 takePicture state: .*-15_UC1Status.jpg
+1 takePicture state: .*-16_UC1Status.jpg
+2 takePicture state: .*-16_UC2Status.jpg
+5 takePicture state: .*-17_UC1Status.jpg
+4 takePicture state: .*-18_UC1Status.jpg
+2 takePicture state: .*-18_UC2Status.jpg
+1 takePicture state: .*-19_UC1Status.jpg
+1 takePicture state: .*-19_UC4Status.jpg
+1 takePicture state: .*-24_UC4Status.jpg
+1 takePicture state: .*-25_UC1Status.jpg
+1 takePicture state: .*-25_UC2Status.jpg
+1 takePicture state: .*-25_UC3Status.jpg
+1 takePicture state: .*-25_UC4Status.jpg
+1 takePicture state: .*-26_UC2Status.jpg
+2 takePicture state: .*-28_UC2Status.jpg
+2 takePicture state: .*-29_UC2Status.jpg
+1 takePicture state: .*-30_UC2Status.jpg
+1 takePicture state: .*-31_UC2Status.jpg
+1 takePicture state: .*-32_UC2Status.jpg
+1 takePicture state: .*-33_UC2Status.jpg
+1 takePicture state: .*-34_UC2Status.jpg
+1 takePicture state: .*-37_UC2Status.jpg
+1 takePicture state: .*-38_UC2Status.jpg
+1 takePicture state: .*-39_UC1Status.jpg
+1 takePicture state: .*-39_UC2Status.jpg
+1 takePicture state: .*-39_UC3Status.jpg
+1 takePicture state: .*-39_UC4Status.jpg
+1 takePicture state: .*-40_UC1Status.jpg
+1 takePicture state: .*-40_UC2Status.jpg
+1 takePicture state: .*-40_UC3Status.jpg
+1 takePicture state: .*-40_UC4Status.jpg
+1 takePicture state: .*-44_UC2Status.jpg
+1 takePicture state: .*-45_UC2Status.jpg
+1 takePicture state: .*-46_UC2Status.jpg
+1 takePicture state: .*-50_UC1Status.jpg
+1 takePicture state: .*-51_UC1Status.jpg
+2 takePicture state: .*-52_UC2Status.jpg
+1 takePicture state: .*-53_UC1Status.jpg
+1 takePicture state: .*-53_UC2Status.jpg
+1 takePicture state: .*-54_UC1Status.jpg
+1 takePicture state: .*-55_UC2Status.jpg
+1 takePicture state: .*-56_UC2Status.jpg
+2 takePicture state: .*-57_UC2Status.jpg
+1 takePicture state: .*-59_UC2Status.jpg

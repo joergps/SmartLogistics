@@ -1,4 +1,4 @@
-#Mon Oct 17 19:25:20 2016
+#Tue Oct 25 14:01:08 2016
 setstate Challenge off
 setstate Challenge 2016-10-14 17:57:41 state off
 setstate FSR 0
@@ -11,35 +11,35 @@ setstate Logfile active
 setstate Pilot_Switch off
 setstate Pilot_Switch 2016-10-17 18:10:40 state off
 setstate TABLETUI TABLETUI
-setstate UC1 120.7
-setstate UC1 2016-10-15 15:09:28 Abstand 120.7
+setstate UC1 5.1
+setstate UC1 2016-10-25 10:51:00 Abstand 5.1
 setstate UC1 2016-09-15 22:02:23 Echo-GPIO 24
 setstate UC1 2016-10-15 11:31:24 Kalibrierung 90
 setstate UC1 2016-09-15 22:01:59 Trigger-GPIO 18
 setstate UC1 2016-08-25 21:53:27 state 153.7
-setstate UC1Status 0
-setstate UC1Status 2016-10-15 15:09:28 state 0
-setstate UC2 115.5
-setstate UC2 2016-10-17 18:00:11 Abstand 115.5
+setstate UC1Status 1
+setstate UC1Status 2016-10-25 10:51:00 state 1
+setstate UC2 80.5
+setstate UC2 2016-10-25 10:51:01 Abstand 80.5
 setstate UC2 2016-09-15 22:39:59 Echo-GPIO 21
 setstate UC2 2016-10-15 11:31:28 Kalibrierung 90
 setstate UC2 2016-09-15 22:39:14 Trigger-GPIO 20
-setstate UC2Status 0
-setstate UC2Status 2016-10-17 18:00:11 state 0
-setstate UC3 124.8
-setstate UC3 2016-10-14 17:55:59 Abstand 124.8
+setstate UC2Status 1
+setstate UC2Status 2016-10-25 10:51:01 state 1
+setstate UC3 0.1
+setstate UC3 2016-10-25 10:50:25 Abstand 0.1
 setstate UC3 2016-09-15 22:40:08 Echo-GPIO 15
 setstate UC3 2016-09-15 22:57:22 Kalibrierung 40
 setstate UC3 2016-09-15 22:39:22 Trigger-GPIO 14
-setstate UC3Status 0
-setstate UC3Status 2016-10-14 17:56:00 state 0
-setstate UC4 97.9
-setstate UC4 2016-10-14 18:00:57 Abstand 97.9
+setstate UC3Status 1
+setstate UC3Status 2016-10-25 10:50:25 state 1
+setstate UC4 4.1
+setstate UC4 2016-10-25 10:51:01 Abstand 4.1
 setstate UC4 2016-09-15 22:40:17 Echo-GPIO 12
 setstate UC4 2016-09-15 22:57:25 Kalibrierung 40
 setstate UC4 2016-09-15 22:39:30 Trigger-GPIO 16
-setstate UC4Status 0
-setstate UC4Status 2016-10-14 18:00:57 state 0
+setstate UC4Status 1
+setstate UC4Status 2016-10-25 10:51:01 state 1
 setstate UC5 999
 setstate UC5 2016-09-15 22:31:52 Abstand 999
 setstate UC5 2016-09-15 22:31:16 state 12
@@ -51,23 +51,23 @@ setstate UC6 2016-09-15 22:31:23 state 12
 setstate UC6Status 0
 setstate UC6Status 2016-09-15 22:31:56 state 0
 setstate UC_Switch off
-setstate UC_Switch 2016-10-15 10:19:07 state off
+setstate UC_Switch 2016-10-25 10:50:57 state off
 setstate at_FSR disabled
-setstate at_FSR 2016-10-17 19:25:19 state disabled
+setstate at_FSR 2016-10-25 14:01:08 state disabled
 setstate at_UC1 disabled
-setstate at_UC1 2016-10-17 19:25:19 state disabled
+setstate at_UC1 2016-10-25 14:01:08 state disabled
 setstate at_UC2 disabled
-setstate at_UC2 2016-10-17 19:25:19 state disabled
+setstate at_UC2 2016-10-25 14:01:08 state disabled
 setstate at_UC3 disabled
-setstate at_UC3 2016-10-17 19:25:19 state disabled
+setstate at_UC3 2016-10-25 14:01:08 state disabled
 setstate at_UC4 disabled
-setstate at_UC4 2016-10-17 19:25:19 state disabled
+setstate at_UC4 2016-10-25 14:01:08 state disabled
 setstate at_UC5 disabled
-setstate at_UC5 2016-10-17 19:25:19 state disabled
+setstate at_UC5 2016-10-25 14:01:08 state disabled
 setstate at_UC6 disabled
-setstate at_UC6 2016-10-17 19:25:19 state disabled
+setstate at_UC6 2016-10-25 14:01:08 state disabled
 setstate at_countdown disabled
-setstate at_countdown 2016-10-17 19:25:19 state disabled
+setstate at_countdown 2016-10-25 14:01:08 state disabled
 setstate autocreate active
 setstate calibrate_UC1 off
 setstate calibrate_UC1 2016-09-15 21:46:31 state off
@@ -92,67 +92,73 @@ setstate gameOver 2016-10-14 17:57:41 state game over
 setstate gameoverSound on
 setstate gameoverSound 2016-10-14 17:57:41 state on
 setstate global <no definition>
-setstate initialUsbCheck 2016-10-17 18:11:02
-setstate initialUsbCheck 2016-10-17 18:11:02 state active
+setstate initialUsbCheck 2016-10-25 13:48:47
+setstate initialUsbCheck 2016-10-25 13:48:47 state active
 setstate mobile_ui mobile_ui
 setstate money 0
 setstate money 2016-10-14 17:57:41 state 0
 setstate moneySound off
 setstate moneySound 2016-09-15 22:59:18 state off
-setstate n_FSRStatus 2016-10-17 19:25:14
-setstate n_FSRStatus 2016-10-17 18:11:02 state active
+setstate n_FSRStatus active
+setstate n_FSRStatus 2016-10-25 13:48:47 state active
+setstate n_LogStatus active
+setstate n_LogStatus 2016-10-25 13:48:47 state active
+setstate n_PictureUCStatus active
+setstate n_PictureUCStatus 2016-10-25 13:48:47 state active
 setstate n_UC1Status active
-setstate n_UC1Status 2016-10-17 18:11:02 state active
+setstate n_UC1Status 2016-10-25 13:48:47 state active
 setstate n_UC1u2_off active
-setstate n_UC1u2_off 2016-10-17 18:11:02 state active
+setstate n_UC1u2_off 2016-10-25 13:48:47 state active
 setstate n_UC1u2_on active
-setstate n_UC1u2_on 2016-10-17 18:11:02 state active
+setstate n_UC1u2_on 2016-10-25 13:48:47 state active
 setstate n_UC2Status active
-setstate n_UC2Status 2016-10-17 18:11:02 state active
+setstate n_UC2Status 2016-10-25 13:48:47 state active
 setstate n_UC3Status active
-setstate n_UC3Status 2016-10-17 18:11:02 state active
+setstate n_UC3Status 2016-10-25 13:48:47 state active
 setstate n_UC4Status active
-setstate n_UC4Status 2016-10-17 18:11:02 state active
+setstate n_UC4Status 2016-10-25 13:48:47 state active
 setstate n_UC5Status active
-setstate n_UC5Status 2016-10-17 18:11:02 state active
+setstate n_UC5Status 2016-10-25 13:48:47 state active
 setstate n_UC6Status active
-setstate n_UC6Status 2016-10-17 18:11:02 state active
+setstate n_UC6Status 2016-10-25 13:48:47 state active
 setstate n_UC_off active
-setstate n_UC_off 2016-10-17 18:11:02 state active
+setstate n_UC_off 2016-10-25 13:48:47 state active
 setstate n_UC_on active
-setstate n_UC_on 2016-10-17 18:11:02 state active
+setstate n_UC_on 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC1 active
-setstate n_calibrate_UC1 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC1 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC2 active
-setstate n_calibrate_UC2 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC2 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC3 active
-setstate n_calibrate_UC3 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC3 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC4 active
-setstate n_calibrate_UC4 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC4 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC5 active
-setstate n_calibrate_UC5 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC5 2016-10-25 13:48:47 state active
 setstate n_calibrate_UC6 active
-setstate n_calibrate_UC6 2016-10-17 18:11:02 state active
+setstate n_calibrate_UC6 2016-10-25 13:48:47 state active
 setstate n_challenge_switch active
-setstate n_challenge_switch 2016-10-17 18:11:02 state active
+setstate n_challenge_switch 2016-10-25 13:48:47 state active
 setstate n_distance_message disabled
-setstate n_distance_message 2016-10-17 18:11:02 state disabled
+setstate n_distance_message 2016-10-25 13:48:47 state disabled
 setstate n_message1 disabled
-setstate n_message1 2016-10-17 18:11:02 state disabled
+setstate n_message1 2016-10-25 13:48:47 state disabled
 setstate n_only1message1 active
-setstate n_only1message1 2016-10-17 18:11:02 state active
+setstate n_only1message1 2016-10-25 13:48:47 state active
 setstate n_only1message2 active
-setstate n_only1message2 2016-10-17 18:11:02 state active
+setstate n_only1message2 2016-10-25 13:48:47 state active
 setstate n_only1message3 active
-setstate n_only1message3 2016-10-17 18:11:02 state active
+setstate n_only1message3 2016-10-25 13:48:47 state active
 setstate n_resetChallenge active
-setstate n_resetChallenge 2016-10-17 18:11:02 state active
-setstate n_runFSR_off 2016-10-17 19:25:14
-setstate n_runFSR_off 2016-10-17 19:22:14 state active
-setstate n_runFSR_on 2016-10-17 19:25:02
-setstate n_runFSR_on 2016-10-17 19:24:42 state active
+setstate n_resetChallenge 2016-10-25 13:48:47 state active
+setstate n_runFSR_off active
+setstate n_runFSR_off 2016-10-25 13:48:47 state active
+setstate n_runFSR_on active
+setstate n_runFSR_on 2016-10-25 13:48:47 state active
 setstate n_startChallenge active
-setstate n_startChallenge 2016-10-17 18:11:02 state active
+setstate n_startChallenge 2016-10-25 13:48:47 state active
+setstate n_takePicture active
+setstate n_takePicture 2016-10-25 13:48:47 state active
 setstate play_message1 off
 setstate play_message1 2016-09-15 19:25:43 state off
 setstate play_message2 off
@@ -164,7 +170,7 @@ setstate resetChallenge 2016-09-15 22:59:18 state on
 setstate runFSR off
 setstate runFSR 2016-10-17 19:25:14 state off
 setstate run_challenge disabled
-setstate run_challenge 2016-10-17 19:25:19 state disabled
+setstate run_challenge 2016-10-25 14:01:08 state disabled
 setstate score 0
 setstate score 2016-09-15 22:59:18 state 0
 setstate showCountdown off
@@ -176,6 +182,9 @@ setstate showMessage1 2016-09-15 22:35:21 state off
 setstate show_message Hi komm mir doch näher.
 setstate show_message 2016-08-31 11:24:54 state Hi komm mir doch näher.
 setstate show_ui show_ui
+setstate smartLog active
+setstate smartLogger UC2Status - UC1:1 UC2:1 UC3:1 UC4:1 UC5:0 UC6:0
+setstate smartLogger 2016-10-25 10:51:00 state UC2Status - UC1:1 UC2:1 UC3:1 UC4:1 UC5:0 UC6:0
 setstate sollUC1 1
 setstate sollUC1 2016-08-31 11:26:55 state 1
 setstate sollUC2 0
@@ -188,3 +197,5 @@ setstate startChallenge on
 setstate startChallenge 2016-09-15 22:59:15 state on
 setstate startSound on
 setstate startSound 2016-09-15 22:59:15 state on
+setstate takePicture 2016-10-25_10-51-00_UC2Status.jpg
+setstate takePicture 2016-10-25 10:51:00 state 2016-10-25_10-51-00_UC2Status.jpg
