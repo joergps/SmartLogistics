@@ -14,6 +14,10 @@
 #define SLIP_ESC_END  0xDC
 #define SLIP_ESC_ESC  0xDD
 
+// SLIP Receiver/Decoder States
+#define SLIPDEC_IDLE_STATE  0
+#define SLIPDEC_START_STATE 1
+
 //-----------------------------------------------------------
 // Declare SLIP variables
 //-----------------------------------------------------------
@@ -82,4 +86,34 @@ int SLIP_EncodeData(UINT8* dstBuffer, int dstBufferSize, UINT8* srcData, int src
 
   // return tx length error
   return -1;  
+}
+
+void SLIP_Init(TSLIP_CbRxMessage cbRxMessage) {
+  // init decoder to idle state, no rx-buffer avaliable
+  SLIP.RxState = SLIPDEC_IDLE_STATE;
+  SLIP.RxIndex = 0;
+  SLIP.RxBuffer = 0;
+  SLIP.RxBufferSize = 0;
+
+  // save message receiver callback
+  SLIP.CbRxMessage = cbRxMessage;
+  
+  // init encoder
+  SLIP.TxIndex = 0;
+  SLIP.TxBuffer = 0;
+  SLIP.TxBufferSize = 0;
+}
+
+bool SLIP_SetRxBuffer(UINT8* rxBuffer, int rxBufferSize) {
+  // receiver in IDLE state and client already registered ?
+  if ((SLIP.RxState == SLIPDEC_IDLE_STATE) && SLIP.CbRxMessage) {
+    // same buffer params
+    SLIP.RxBuffer = rxBuffer;
+    SLIP.RxBufferSize = rxBufferSize;
+    
+    // enable decoder
+    SLIP.RxState = SLIPDEC_START_STATE;
+    return true;
+  }
+  return false;
 }

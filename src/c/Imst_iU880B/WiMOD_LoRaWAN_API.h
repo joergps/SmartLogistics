@@ -8,15 +8,25 @@
 #define WIMOD_LORAWAN_API_H
 
 //-----------------------------------------------------------
-// Defines
+// Defines; see HCI_Spec_v1.13
 //-----------------------------------------------------------
 #define DEVMGMT_SAP_ID		    0x01
+#define LORAWAN_SAP_ID        0x10
+
 #define DEVMGMT_MSG_PING_REQ	0x01
+#define DEVMGMT_MSG_PING_RSP  0x02
+
+#define LORAWAN_MSG_SEND_UDATA_RSP 0x0E
+
+#define LORAWAN_MSG_SEND_CDATA_RSP 0x12
 
 
 //-----------------------------------------------------------
 // Method declarations
 //-----------------------------------------------------------
+
+// Initialize device
+void WiMOD_LoRaWAN_Init(const char* comPort);
 
 // Send ping
 int WiMOD_LoRaWAN_SendPing();

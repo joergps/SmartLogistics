@@ -16,7 +16,8 @@
 // Defines
 //-----------------------------------------------------------
 typedef unsigned char	UINT8;
-typedef uint16_t	UINT16;
+typedef uint16_t	    UINT16;
+typedef uint32_t	    UINT32;
 
 #define WIMOD_HCI_MSG_PAYLOD_SIZE 	300
 #define WIMOD_HCI_MSG_FCS_SIZE		  2
@@ -40,9 +41,16 @@ typedef struct {
   UINT8 	CRC16[WIMOD_HCI_MSG_FCS_SIZE];
 } TWiMOD_HCI_Message;
 
+typedef TWiMOD_HCI_Message* (*TWiMOD_HCI_CbRxMessage)(TWiMOD_HCI_Message* rxMessage);
+
 //-----------------------------------------------------------
 // Method declarations
 //-----------------------------------------------------------
+
+bool WiMOD_HCI_Init(const char* comPort, 
+                    TWiMOD_HCI_CbRxMessage cbRxMessage, 
+                    TWiMOD_HCI_Message* rxMessage);
+                    
 int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage);
 
 #endif

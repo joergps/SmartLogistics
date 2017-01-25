@@ -10,11 +10,18 @@
 #include <stdio.h>
 #include "WiMOD_LoRaWAN_API.h"
 
+#define COM_PORT  "COM128"
+
 // forward declarations
 static void Ping();
 
 int main(int argc, char *argv[]) {
   printf("***** Main started.\n");
+  
+  // initialization
+  WiMOD_LoRaWAN_Init(COM_PORT);
+  
+  // ping device
   Ping();
   printf("***** Main ended.\n");
 }

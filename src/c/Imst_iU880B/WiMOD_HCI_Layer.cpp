@@ -4,6 +4,7 @@
 //
 // Author: Joerg P-S
 //-----------------------------------------------------------
+#include <stdint.h>
 #include "WiMOD_HCI_Layer.h"
 #include "crc16.h"
 #include "slip.h"
@@ -11,11 +12,53 @@
 //-----------------------------------------------------------
 // Defines
 //-----------------------------------------------------------
+// SLIP Message Receiver Callback
+static UINT8* WiMOD_HCI_ProcessRxMessage(UINT8* rxData, int rxLength);
+
 static UINT8  TxBuffer[sizeof( TWiMOD_HCI_Message ) * 2 + 2];
+
+typedef struct {
+  // CRC Error counter
+  UINT32 CRCErrors;
+  
+  // RxMessage
+  TWiMOD_HCI_Message* RxMessage;
+  
+  // Receiver callback
+  TWiMOD_HCI_CbRxMessage CbRxMessage;
+} TWiMOD_HCI_MsgLayer;
+
+static TWiMOD_HCI_MsgLayer HCI;
 
 //-----------------------------------------------------------
 // Implementation
 //-----------------------------------------------------------
+bool WiMOD_HCI_Init(const char* comPort, // comPort
+                    TWiMOD_HCI_CbRxMessage cbRxMessage, // HCI msg receiver callback
+                    TWiMOD_HCI_Message* rxMessage) { // intial rxMessage
+  // init error counter
+  HCI.CRCErrors = 0;
+  
+  // save receiver callback
+  HCI.CbRxMessage = cbRxMessage;
+
+  // save RxMessage
+  HCI.RxMessage = rxMessage;
+  
+  // init SLIP
+  SLIP_Init(WiMOD_HCI_ProcessRxMessage);
+  
+  // init first RxBuffer to SAP_ID of HCI message, size without 16-Bit Length Field
+  SLIP_SetRxBuffer(&rxMessage->SapID, sizeof(TWiMOD_HCI_Message) - sizeof(UINT16));
+  
+  // TODO!!!
+  // init serial device
+  // return SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
+  return true; 
+}
+//------------------------------------------------------------------------------
+
+
 int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage) {
   // check parameter
   if (!txMessage) {
@@ -53,5 +96,32 @@ int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage) {
   }
 
   // ERROR: Slip layer could not encode message
+  return 0;
+}
+
+static UINT8* WiMOD_HCI_ProcessRxMessage(UINT8* rxData, int rxLength) {
+  // check min length
+  if (rxLength >= (WIMOD_HCI_MSG_HEADER_SIZE + WIMOD_HCI_MSG_FCS_SIZE)) {
+    if (CRC16_Check(rxData, rxLength, CRC16_INIT_VALUE)) {
+      // receiver registered ?
+      if (HCI.CbRxMessage) {
+        // yes, complete message info
+        HCI.RxMessage->Length = rxLength - (WIMOD_HCI_MSG_HEADER_SIZE + WIMOD_HCI_MSG_FCS_SIZE);
+        
+        // call upper layer receiver and save new RxMessage
+        HCI.RxMessage = (*HCI.CbRxMessage)(HCI.RxMessage);
+      }
+    } else {
+      HCI.CRCErrors++;
+    }
+  }
+
+  // free HCI message available ?
+  if (HCI.RxMessage) {
+    // yes, return pointer to first byte
+    return &HCI.RxMessage->SapID;
+  }
+  
+  // error, disable SLIP decoder
   return 0;
 }

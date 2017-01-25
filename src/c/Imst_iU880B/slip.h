@@ -20,4 +20,8 @@ typedef UINT8*      (*TSLIP_CbRxMessage)(UINT8* message, int length);
 //-----------------------------------------------------------
 int SLIP_EncodeData(UINT8* dstBuffer, int txBufferSize, UINT8* srcData, int srcLength);
 
+void SLIP_Init(TSLIP_CbRxMessage cbRxMessage);
+
+bool SLIP_SetRxBuffer(UINT8* rxBuffer, int rxBufferSize);
+
 #endif
