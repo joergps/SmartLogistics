@@ -1,0 +1,20 @@
+1. Der IMST iU880B
+Der IMST iU880B ist ein USB Adapter, der einen iM880B Sender (von IMST) für LoRaWan beinhaltet. Der Chip wird per virtuellem COM-Port angesprochen (d.h. obwohl der Adapter am USB-Port steckt, wird er Software-seitig über einen COM-Port angesprochen. Dazu beinhaltet der USB-Adapter auch einen Chip FT232RQ von FTDI.
+
+2. Virtuellen COM-Port ermitteln
+
+Virtuelle COM-Ports sind per Paket "vcp" standardmäßig von Linux unterstützt.
+
+Der USB Adapter ist über einen virtuellen COM-Port zu erreichen. Um zu sehen, dass der USB Adapter richtig erkannt wurde, muss man eingeben: "dmesg | grep FTDI". Gewünschte Ausgabe:
+
+"usb 1-1.5: FTDI USB Serial Device converter now attached to ttyUSB0"
+
+Dann ist der Adapter (hier im Beispiel) unter "/dev/ttyUSB0" erreichbar.
+
+Anleitung für den FTDI siehe ${github:SmartLogistics}/doc/Treiber/FTDI/AN_220_FTDI_Drivers_Installation_Guide_for_Linux.pdf
+
+3. USB-Sender ansteuern
+
+- Code liegt unter ${github:SmartLogistics}/src/c/Imst_iU880B
+- Compilieren mit "make lorasender"
+- Ausführen mit "./LoRaSender"
