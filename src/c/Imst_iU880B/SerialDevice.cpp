@@ -5,6 +5,7 @@
 // Author: Joerg P-S
 //-----------------------------------------------------------
 #include "SerialDevice.h"
+#include <stdio.h>
 
 static int SerialDevice_ComHandle = INVALID_HANDLE_VALUE;
 
@@ -86,11 +87,32 @@ bool SerialDevice_Open(const char* comPort, UINT32 baudRate, int bits, UINT8 par
 }
 
 int SerialDevice_ReadData(UINT8* rxBuffer, int bufferSize) {
-  // TODO!!!
-  return -1;
+  // handle ok ?
+  if(SerialDevice_ComHandle == INVALID_HANDLE_VALUE) {
+    return 0;
+  }
+
+  ssize_t  numRxBytes = ::read(SerialDevice_ComHandle, rxBuffer, bufferSize);
+  if(numRxBytes > 0) {
+    return (int)numRxBytes;
+  }
+
+  return 0;
 }
 
 bool SerialDevice_SendData(UINT8* data, int txLength) {
-  // TODO!!!
-  return false;
+  if(SerialDevice_ComHandle == INVALID_HANDLE_VALUE) {
+    return false;
+  }
+  
+  printf("Sending message...");
+  size_t  numTxBytes = ::write(SerialDevice_ComHandle, data, txLength);
+
+  if (numTxBytes == (size_t)txLength) {
+    printf("successful.");
+    return true;
+  } else {
+    printf("failed.\n");
+    return false;
+  }
 }

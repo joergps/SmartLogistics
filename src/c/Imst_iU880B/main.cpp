@@ -28,13 +28,15 @@ int main(int argc, char *argv[]) {
   }
   
   // ping device
+  // TODO: Why does a single "ping" not work?
+  Ping();
   Ping();
   
   // wait for reply from USB adapter
   bool run = true;
   printf("Waiting for feedback from adaptor; press <q> to quit...");
   while (run) {
-    
+  
     // handle receiver process
     WiMOD_LoRaWAN_Process();
     
