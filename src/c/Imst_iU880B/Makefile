@@ -3,6 +3,8 @@
 CC=gcc
 CFLAGS=-I.
 
-lorasender: slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o
-	${CC} -o LoRaSender slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o ${CFLAGS}
+lorasender: SerialDevice.o slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o
+	${CC} -o LoRaSender SerialDevice.o slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o ${CFLAGS}
 
+clean:
+	rm *.o LoRaSender LoRaSender.exe

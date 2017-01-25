@@ -8,6 +8,7 @@
 #include "WiMOD_HCI_Layer.h"
 #include "crc16.h"
 #include "slip.h"
+#include "SerialDevice.h"
 
 //-----------------------------------------------------------
 // Defines
@@ -51,10 +52,9 @@ bool WiMOD_HCI_Init(const char* comPort, // comPort
   // init first RxBuffer to SAP_ID of HCI message, size without 16-Bit Length Field
   SLIP_SetRxBuffer(&rxMessage->SapID, sizeof(TWiMOD_HCI_Message) - sizeof(UINT16));
   
-  // TODO!!!
   // init serial device
-  // return SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
-  return true; 
+  // see HCI_Spec_v1.13 page 10 for details
+  return SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
 }
 //------------------------------------------------------------------------------
 
@@ -86,9 +86,7 @@ int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage) {
                                   
   if (txLength > 0) {
     // i.e. message is ok
-    // TODO: Substituet with
-    // int result = SerialDevice_SendData(TxBuffer, txLength);
-    int result = 1;
+    int result = SerialDevice_SendData(TxBuffer, txLength);
     if (result > 0) {
       // send message worked!
       return 1;
