@@ -51,6 +51,8 @@ bool WiMOD_HCI_Init(const char* comPort,
                     TWiMOD_HCI_CbRxMessage cbRxMessage, 
                     TWiMOD_HCI_Message* rxMessage);
                     
+void WiMOD_HCI_Process();                    
+                    
 int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage);
 
 #endif

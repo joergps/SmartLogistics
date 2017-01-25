@@ -58,6 +58,19 @@ bool WiMOD_HCI_Init(const char* comPort, // comPort
 }
 //------------------------------------------------------------------------------
 
+void WiMOD_HCI_Process() {
+  UINT8 rxBuf[20];
+  
+  // read small chunk of data
+  int rxLength = SerialDevice_ReadData(rxBuf, sizeof(rxBuf));
+  
+  // data available ?
+  if (rxLength > 0) {
+    // yes, forward to SLIP decoder, decoded SLIP message will be passed to
+    // function "WiMOD_HCI_ProcessRxMessage"
+    SLIP_DecodeData(rxBuf, rxLength);
+  }
+}
 
 int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage) {
   // check parameter

@@ -11,6 +11,11 @@ bool SerialDevice_Open(const char* comPort, UINT32 baudRate, int bits, UINT8 par
   return false;
 }
 
+int SerialDevice_ReadData(UINT8* rxBuffer, int bufferSize) {
+  // TODO!!!
+  return -1;
+}
+
 bool SerialDevice_SendData(UINT8* data, int txLength) {
   // TODO!!!
   return false;

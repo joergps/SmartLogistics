@@ -18,6 +18,10 @@ typedef UINT8*      (*TSLIP_CbRxMessage)(UINT8* message, int length);
 //-----------------------------------------------------------
 // Method declarations
 //-----------------------------------------------------------
+
+// Decode incoming Data
+void SLIP_DecodeData(UINT8* srcData, int srcLength);
+
 int SLIP_EncodeData(UINT8* dstBuffer, int txBufferSize, UINT8* srcData, int srcLength);
 
 void SLIP_Init(TSLIP_CbRxMessage cbRxMessage);

@@ -43,6 +43,11 @@ void WiMOD_LoRaWAN_Init(const char* comPort) {
                   &RxMessage); // rx message
 }
 
+void WiMOD_LoRaWAN_Process() {
+  // call HCI process
+  WiMOD_HCI_Process();
+}
+
 // Handle received Device Management SAP messages
 static void WiMOD_LoRaWAN_Process_DevMgmt_Message(TWiMOD_HCI_Message* rxMessage) {
   switch(rxMessage->MsgID) {

@@ -28,6 +28,9 @@
 // Initialize device
 void WiMOD_LoRaWAN_Init(const char* comPort);
 
+// Handle process, i.e. incoming data from USB adaptor
+void WiMOD_LoRaWAN_Process();
+
 // Send ping
 int WiMOD_LoRaWAN_SendPing();
 

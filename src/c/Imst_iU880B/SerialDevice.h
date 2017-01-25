@@ -22,6 +22,8 @@ typedef uint32_t	    UINT32;
 // SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
 bool SerialDevice_Open(const char* comPort, UINT32 baudRate, int bits = DataBits_8, UINT8 parity = Parity_None);
 
+int SerialDevice_ReadData(UINT8* rxBuffer, int bufferSize);
+
 bool SerialDevice_SendData(UINT8* data, int txLength);
 
 #endif

@@ -7,8 +7,9 @@
 // Author: Joerg P-S
 //---
 
-#include <stdio.h>
 #include "WiMOD_LoRaWAN_API.h"
+#include "utilities.h"
+#include <stdio.h>
 
 #define COM_PORT  "COM128"
 
@@ -23,7 +24,30 @@ int main(int argc, char *argv[]) {
   
   // ping device
   Ping();
-  printf("***** Main ended.\n");
+  
+  // wait for reply from USB adapter
+  bool run = true;
+  while (run) {
+    printf("Waiting for feedback from adaptor; press <q> to quit...");
+    
+    // handle receiver process
+    WiMOD_LoRaWAN_Process();
+    
+    if (kbhit()) {
+      char cmd = getch();
+      
+      switch (cmd) {
+        case 'Q':
+        case 'q':
+          run = false;
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  
+  printf("\n***** Main ended.\n");
 }
 
 void Ping() {
