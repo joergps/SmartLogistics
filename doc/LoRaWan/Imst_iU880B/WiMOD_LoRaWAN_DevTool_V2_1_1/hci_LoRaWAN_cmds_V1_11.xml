@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- LoRa WAN HCI commands defined from Spec: WiMOD_LoRaWAN_EndNode_Modem_HCI-Spec_V1_11.pdf  -->
+
+<HCI_CMDs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" TypeName="LoRaWAN">
+  <Endpoints>
+<!-- Device Mgmt -->
+
+    <WmCommandEndpoint Name="DevMgmt" ID="1">
+      <WmCommands>
+
+    <!-- Ping -->
+
+        <WmCommand Name="Ping Req" ID="1">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Ping Rsp" ID="2">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Get Device Info -->
+
+        <WmCommand Name="GetDeviceInfo Req" ID="3">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetDeviceInfo Rsp" ID="4">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="ModuleType        " Length="1" />
+            <WmPayload Name="DevAddress        " Length="4" />
+            <WmPayload Name="DeviceID          " Length="4" />
+          </Payload>
+        </WmCommand>
+        
+    <!-- FW Version -->
+    
+        <WmCommand Name="GetFwInfo Req" ID="5">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetFwInfo Rsp" ID="6">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="FW Minor Nbr      " Length="1" />
+            <WmPayload Name="FW Mayor Nbr      " Length="1" />
+            <WmPayload Name="Build Nbr         " Length="2" />
+            <WmPayload Name="Build-Date        " Length="10" />
+            <WmPayload Name="FW-Img-Name       " Length="35" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Device Reset -->
+
+        <WmCommand Name="Reset Req" ID="7">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Reset Rsp" ID="8">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        
+        <!-- Set OpMode -->
+
+        <WmCommand Name="Set OpMode Req" ID="9">
+          <Payload>
+            <WmPayload Name="OpMode            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Set OpMode Rsp" ID="10">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        <!-- Get OpMode -->
+
+        <WmCommand Name="Get OpMode Req" ID="11">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Get OpMode Rsp" ID="12">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="OpMode            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Set RTC -->
+
+        <WmCommand Name="Set RTC Req" ID="13">
+          <Payload>
+            <WmPayload Name="RTC-Value         " Length="4" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Set RTC Rsp" ID="14">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Get RTC -->
+
+        <WmCommand Name="Get RTC Req" ID="15">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Get RTC Rsp" ID="16">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="RTC-Value         " Length="4" />
+          </Payload>
+        </WmCommand>
+        
+        <!-- Get Device Status -->
+
+        <WmCommand Name="Get Device Status Req" ID="23">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Get Device Status Rsp" ID="24">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="SysTick Resolution" Length="1" />
+            <WmPayload Name="SysTick Counter   " Length="4" />
+            <WmPayload Name="RTC Time          " Length="4" />
+            <WmPayload Name="NVM Status        " Length="2" />
+            <WmPayload Name="Battery Status    " Length="2" />
+            <WmPayload Name="Extra Status      " Length="2" />
+            <WmPayload Name="TX U-Data         " Length="4" />
+            <WmPayload Name="TX C-Data         " Length="4" />
+            <WmPayload Name="TX Error          " Length="4" />
+            <WmPayload Name="RX1 U-Data        " Length="4" />
+            <WmPayload Name="RX1 C-Data        " Length="4" />
+            <WmPayload Name="RX1 MIC-Error     " Length="4" />
+            <WmPayload Name="RX2 U-Data        " Length="4" />
+            <WmPayload Name="RX2 C-Data        " Length="4" />
+            <WmPayload Name="RX2 MIC-Error     " Length="4" />
+            <WmPayload Name="TX Join           " Length="4" />
+            <WmPayload Name="RX Accept         " Length="4" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Set RTC Alarm -->
+        <WmCommand Name="Set RTC Alarm Req" ID="49">
+          <Payload>
+            <WmPayload Name="Options           " Length="1" />
+            <WmPayload Name="Hour              " Length="1" />
+            <WmPayload Name="Minute            " Length="1" />
+            <WmPayload Name="Second            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Set RTC Alarm Rsp" ID="50">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        <!-- Clear RTC Alarm -->
+        <WmCommand Name="Clear RTC Alarm Req" ID="51">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Clear RTC Alarm Rsp" ID="52">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        <!-- Get RTC Alarm -->
+        <WmCommand Name="Get RTC Alarm Req" ID="53">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Get RTC Alarm Rsp" ID="54">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="Alarm-Status      " Length="1" />
+            <WmPayload Name="Options           " Length="1" />
+            <WmPayload Name="Hour              " Length="1" />
+            <WmPayload Name="Minute            " Length="1" />
+            <WmPayload Name="Second            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <!-- RTC Alarm Indication -->
+        <WmCommand Name="RTC Alarm Ind" ID="56">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        </WmCommands>
+    </WmCommandEndpoint>
+
+    
+    <!-- LoRa WAN Services -->
+    <WmCommandEndpoint Name="LoRaWAN" ID="16">
+      <WmCommands>
+
+        <!-- Activate Device -->
+        <WmCommand Name="ActivateDevice Req" ID="1">
+          <Payload>
+            <WmPayload Name="DeviceAddress      " Length="4" />
+            <!-- 128 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="NwkSessionKey-Part1" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="NwkSessionKey-Part2" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="NwkSessionKey-Part3" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="NwkSessionKey-Part4" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <!-- 128 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="AppSessionKey-Part1" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="AppSessionKey-Part2" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="AppSessionKey-Part3" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="AppSessionKey-Part4" Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="ActivateDevice Rsp" ID="2">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <!-- Set Join Parameter -->
+        <WmCommand Name="SetJoinParam Req" ID="5">
+          <Payload>
+            <!-- 64 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="AppEUI-Part1      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+            <WmPayload Name="AppEUI-Part2      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+            <!-- 128 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="AppKey-Part1      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+            <WmPayload Name="AppKey-Part2      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+            <WmPayload Name="AppKey-Part3      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+            <WmPayload Name="AppKey-Part4      " Length="4" ByteOrder="MSB first" HideNumValue="true"/> 
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="SetJoinParam Rsp" ID="6">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        <!-- Join Network -->
+        <WmCommand Name="JoinNwk Req" ID="9">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="JoinNwk Rsp" ID="10">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="JoinNwk TX Ind" ID="11">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="Num TX Packets    " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <WmCommand Name="JoinNwk Ind" ID="12">
+          <Payload>
+            <WmPayload Name="Status  / Format  " Length="1" />
+            <WmPayload Name="New Device Address" Length="4" />
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="RSSI              " Length="1" Optional="true"/>
+            <WmPayload Name="SNR               " Length="1" Optional="true"/>
+            <WmPayload Name="RX Slot           " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <!-- Unreliable Data -->
+        <WmCommand Name="Send UData Req" ID="13">
+          <Payload>
+            <WmPayload Name="Port              " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="Payload1          " Length="1" />
+            <WmPayload Name="Payload2          " Length="1" />
+            <WmPayload Name="Payload3          " Length="1" />
+            <WmPayload Name="Payload4          " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Send UData Rsp" ID="14">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="DutyCycle         " Length="4" Optional="true"/>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Send UData TX Ind" ID="15">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <WmCommand Name="RX UData Ind" ID="16">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="LoRaWAN Port      " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="App-Payload-1     " Length="1" />
+            <WmPayload Name="App-Payload-2     " Length="1" />
+            <WmPayload Name="App-Payload-3     " Length="1" />
+            <WmPayload Name="App-Payload-4     " Length="1" />
+            <!-- the last bytes of the message are defined as follows; the exact position is variable based on payload length -->
+            <WmPayload Name="Channel-Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="RSSI              " Length="1" Optional="true"/>
+            <WmPayload Name="SNR               " Length="1" Optional="true"/>
+            <WmPayload Name="RX Slot           " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <!-- Reliable Data -->
+        <WmCommand Name="Send CData Req" ID="17">
+          <Payload>
+            <WmPayload Name="Port              " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="Payload1          " Length="1" />
+            <WmPayload Name="Payload2          " Length="1" />
+            <WmPayload Name="Payload3          " Length="1" />
+            <WmPayload Name="Payload4          " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Send CData Rsp" ID="18">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="DutyCycle         " Length="4" Optional="true"/>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Send CData TX Ind" ID="19">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="Num TX Packets    " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <WmCommand Name="RX CData Ind" ID="20">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="LoRaWAN Port      " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="App-Payload-1     " Length="1" />
+            <WmPayload Name="App-Payload-2     " Length="1" />
+            <WmPayload Name="App-Payload-3     " Length="1" />
+            <WmPayload Name="App-Payload-4     " Length="1" />
+            <!-- the last bytes of the message are defined as follows; the exact position is variable based on payload length -->
+            <WmPayload Name="Channel-Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="RSSI              " Length="1" Optional="true"/>
+            <WmPayload Name="SNR               " Length="1" Optional="true"/>
+            <WmPayload Name="RX Slot           " Length="1" Optional="true"/>
+            
+          </Payload>
+        </WmCommand>
+        
+        <!-- RX ACK (obsolete) -->
+        <WmCommand Name="RX ACK Ind" ID="21">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="RSSI              " Length="1" Optional="true"/>
+            <WmPayload Name="SNR               " Length="1" Optional="true"/>
+            <WmPayload Name="RX Slot           " Length="1" Optional="true"/>
+          </Payload>
+        </WmCommand>
+        
+        <!-- RX ACK -->
+        <WmCommand Name="No Data Ind" ID="22">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        
+        <!-- Set Radio Stack Config -->
+        <WmCommand Name="SetRadioStackConfig Req" ID="25">
+          <Payload>
+            <WmPayload Name="def. DataRate Index" Length="1" />
+            <WmPayload Name="def. TX Power Level" Length="1" />
+            <WmPayload Name="Options (ADR)      " Length="1" />
+            <WmPayload Name="PowerSaving Mode   " Length="1" />
+            <WmPayload Name="Num Retransmissions" Length="1" />
+            <WmPayload Name="Band Index         " Length="1" />
+          </Payload>
+        </WmCommand>
+
+
+        <WmCommand Name="SetRadioStackConfig Rsp" ID="26">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>        
+        
+        <!-- Get Radio Stack Config -->
+        <WmCommand Name="GetRadioStackConfig Req" ID="27">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetRadioStackConfig Rsp" ID="28">
+          <Payload>
+            <WmPayload Name="Status             " Length="1" />
+            <WmPayload Name="def. DataRate Index" Length="1" />
+            <WmPayload Name="def. TX Power Level" Length="1" />
+            <WmPayload Name="Options (ADR)      " Length="1" />
+            <WmPayload Name="PowerSaving Mode   " Length="1" />
+            <WmPayload Name="Num Retransmissions" Length="1" />
+            <WmPayload Name="Band Index         " Length="1" />
+          </Payload>
+        </WmCommand>        
+
+        
+        <!-- DeActivate Device -->
+        <WmCommand Name="DeactivateDevice Req" ID="33">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="DeactivateDevice Rsp" ID="34">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>        
+        
+        <!-- Factory Reset -->
+        <WmCommand Name="FactoryReset Req" ID="35">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="FactoryReset Rsp" ID="36">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>        
+
+        <!-- Set Device EUI -->
+        <WmCommand Name="SetDeviceEUI Req" ID="37">
+          <Payload>
+            <!-- 64 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="DeviceEUI-Part1   " Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="DeviceEUI-Part2   " Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="SetDeviceEUI Rsp" ID="38">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>        
+
+        <!-- Get Device EUI -->
+        <WmCommand Name="GetDeviceEUI Req" ID="39">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetDeviceEUI Rsp" ID="40">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <!-- 64 bit Field is splitted in 32 bit portions; this is a limitation of this tool -->
+            <WmPayload Name="DeviceEUI-Part1   " Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+            <WmPayload Name="DeviceEUI-Part2   " Length="4" ByteOrder="MSB first" HideNumValue="true"/>
+          </Payload>
+        </WmCommand>        
+
+        <!-- Get Nwk Status -->
+        <WmCommand Name="GetNwkStatus Req" ID="41">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetNwkStatus Rsp" ID="42">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="Nwk-Status        " Length="1" />
+          </Payload>
+        </WmCommand>        
+
+        <!-- Send MAC Command -->
+        <WmCommand Name="Send MAC Cmd Req" ID="43">
+          <Payload>
+            <WmPayload Name="Data Service Type " Length="1" />
+            <WmPayload Name="Command ID        " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="Option-Byte1      " Length="1" />
+            <WmPayload Name="Option-Byte2      " Length="1" />
+            <WmPayload Name="Option-Byte3      " Length="1" />
+            <WmPayload Name="Option-Byte4      " Length="1" />
+          </Payload>
+        </WmCommand>
+        
+        <WmCommand Name="Send MAC Cmd Rsp" ID="44">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="Receive MAC Cmd Ind" ID="45">
+          <Payload>
+            <WmPayload Name="Status / Format   " Length="1" />
+            <!-- Tool limitation on dyn. Payload; here: 4 Byte are defined as an example-->
+            <WmPayload Name="MAC Cmd List1     " Length="1" />
+            <WmPayload Name="MAC Cmd List2     " Length="1" />
+            <WmPayload Name="MAC Cmd List3     " Length="1" />
+            <WmPayload Name="MAC Cmd List4     " Length="1" />
+            
+            <WmPayload Name="Channel Index     " Length="1" Optional="true"/>
+            <WmPayload Name="DataRate Index    " Length="1" Optional="true"/>
+            <WmPayload Name="RSSI              " Length="1" Optional="true"/>
+            <WmPayload Name="SNR               " Length="1" Optional="true"/>
+            <WmPayload Name="RX Slot           " Length="1" Optional="true"/>
+
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="SetCustomConfig Req" ID="49">
+          <Payload>
+            <WmPayload Name="TX Power Offset   " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="SetCustomConfig Rsp" ID="50">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetCustomConfig Req" ID="51">
+          <Payload>
+          </Payload>
+        </WmCommand>
+
+        <WmCommand Name="GetCustomConfig Rsp" ID="52">
+          <Payload>
+            <WmPayload Name="Status            " Length="1" />
+            <WmPayload Name="TX Power Offset   " Length="1" />
+          </Payload>
+        </WmCommand>
+
+        
+        </WmCommands>
+    </WmCommandEndpoint>
+    
+    
+  </Endpoints>
+
+
+</HCI_CMDs>
