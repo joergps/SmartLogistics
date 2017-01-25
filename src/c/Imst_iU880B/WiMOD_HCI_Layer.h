@@ -22,6 +22,9 @@ typedef uint16_t	UINT16;
 #define WIMOD_HCI_MSG_FCS_SIZE		  2
 #define WIMOD_HCI_MSG_HEADER_SIZE   2
 
+#define LOBYTE(x)                   (x)
+#define HIBYTE(x)                   ((UINT16) (x) >> 8)
+
 //-----------------------------------------------------------
 // HCI Message Object
 //-----------------------------------------------------------
