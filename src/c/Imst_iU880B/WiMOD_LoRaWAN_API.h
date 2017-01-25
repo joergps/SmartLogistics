@@ -25,8 +25,10 @@
 // Method declarations
 //-----------------------------------------------------------
 
+void WiMOD_LoRaWAN_Close();
+
 // Initialize device
-void WiMOD_LoRaWAN_Init(const char* comPort);
+bool WiMOD_LoRaWAN_Init(const char* comPort);
 
 // Handle process, i.e. incoming data from USB adaptor
 void WiMOD_LoRaWAN_Process();

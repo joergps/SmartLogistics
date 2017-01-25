@@ -36,9 +36,13 @@ TWiMOD_HCI_Message RxMessage;
 //-----------------------------------------------------------
 // Implementation
 //-----------------------------------------------------------
-void WiMOD_LoRaWAN_Init(const char* comPort) {
+void WiMOD_LoRaWAN_Close() {
+  WiMOD_HCI_Close();
+}
+
+bool WiMOD_LoRaWAN_Init(const char* comPort) {
   // init HCI layer
-  WiMOD_HCI_Init(comPort, // comPort
+  return WiMOD_HCI_Init(comPort, // comPort
                   WiMOD_LoRaWAN_Process_RxMessage, // receiver callback
                   &RxMessage); // rx message
 }

@@ -34,6 +34,10 @@ static TWiMOD_HCI_MsgLayer HCI;
 //-----------------------------------------------------------
 // Implementation
 //-----------------------------------------------------------
+bool WiMOD_HCI_Close() {
+  SerialDevice_Close();
+}
+
 bool WiMOD_HCI_Init(const char* comPort, // comPort
                     TWiMOD_HCI_CbRxMessage cbRxMessage, // HCI msg receiver callback
                     TWiMOD_HCI_Message* rxMessage) { // intial rxMessage

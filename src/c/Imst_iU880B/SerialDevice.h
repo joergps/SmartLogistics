@@ -7,7 +7,15 @@
 #ifndef SERIAL_DEVICE_H
 #define SERIAL_DEVICE_H
 
+#include <errno.h>
+#include <fcntl.h>
+#include <stdint.h>
+#include <sys/time.h>
+#include <sys/ioctl.h>
 #include <termios.h>
+#include <unistd.h>
+
+#define INVALID_HANDLE_VALUE    -1
 
 #define Baudrate_9600       9600
 #define Baudrate_115200     115200
@@ -18,6 +26,8 @@
 
 typedef unsigned char	UINT8;
 typedef uint32_t	    UINT32;
+
+bool SerialDevice_Close();
 
 // SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
 bool SerialDevice_Open(const char* comPort, UINT32 baudRate, int bits = DataBits_8, UINT8 parity = Parity_None);

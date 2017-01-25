@@ -47,6 +47,8 @@ typedef TWiMOD_HCI_Message* (*TWiMOD_HCI_CbRxMessage)(TWiMOD_HCI_Message* rxMess
 // Method declarations
 //-----------------------------------------------------------
 
+bool WiMOD_HCI_Close(); 
+
 bool WiMOD_HCI_Init(const char* comPort, 
                     TWiMOD_HCI_CbRxMessage cbRxMessage, 
                     TWiMOD_HCI_Message* rxMessage);

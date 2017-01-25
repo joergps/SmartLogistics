@@ -20,15 +20,20 @@ int main(int argc, char *argv[]) {
   printf("***** Main started.\n");
   
   // initialization
-  WiMOD_LoRaWAN_Init(COM_PORT);
+  bool init = WiMOD_LoRaWAN_Init(COM_PORT);
+  
+  if (init == false) {
+    printf("Could not initialize adapter at port '%s'.", COM_PORT);
+    return -1;
+  }
   
   // ping device
   Ping();
   
   // wait for reply from USB adapter
   bool run = true;
+  printf("Waiting for feedback from adaptor; press <q> to quit...");
   while (run) {
-    printf("Waiting for feedback from adaptor; press <q> to quit...");
     
     // handle receiver process
     WiMOD_LoRaWAN_Process();
@@ -46,6 +51,7 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  WiMOD_LoRaWAN_Close();
   
   printf("\n***** Main ended.\n");
 }
