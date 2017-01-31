@@ -18,6 +18,10 @@
 // forward declarations
 extern bool hasPingResponse;
 static void Ping();
+static void DoPing();
+
+// defines
+static int TIMEOUT_IN_SECONDS = 5;
 
 int main(int argc, char *argv[]) {
   printf("***** Main started.\n");
@@ -31,39 +35,37 @@ int main(int argc, char *argv[]) {
   }
   
   // ping device
-  // TODO: Why does a single "ping" not work?
-  Ping();
   Ping();
   
-  // wait for reply from USB adapter
-  bool run = true;
-  printf("Waiting for feedback from adaptor; press <q> to quit...");
-  while (run && !hasPingResponse) {
-    printf("hasPingResponse: %d\n", hasPingResponse);
-    Ping();
-    std::this_thread::sleep_for (std::chrono::seconds(1));
-  
-    // handle receiver process
-    WiMOD_LoRaWAN_Process();
-    
-    if (kbhit()) {
-      char cmd = getch();
-      
-      switch (cmd) {
-        case 'Q':
-        case 'q':
-          run = false;
-          break;
-        default:
-          break;
-      }
-    }
-  }
+  // Close device
   WiMOD_LoRaWAN_Close();
   
   printf("\n***** Main ended.\n");
 }
 
-void Ping() {
+void DoPing() {
   WiMOD_LoRaWAN_SendPing();
+}
+
+void Ping() {
+  // TODO figure out why ping has to be sent twice
+  DoPing();
+  DoPing();
+  int waitInSeconds = 0; // obviously not really seconds, but close enough
+  
+  while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasPingResponse) {
+    std::this_thread::sleep_for (std::chrono::seconds(1));
+    
+    // handle receiver process
+    WiMOD_LoRaWAN_Process();
+
+    ++waitInSeconds;
+  }
+  
+  if (hasPingResponse) {
+    printf("Ping was successfully received after about %d seconds.\n", waitInSeconds);
+  } else {
+    printf("Ping FAILED with timeout after %d seconds.\n", TIMEOUT_IN_SECONDS);
+  }
+  
 }

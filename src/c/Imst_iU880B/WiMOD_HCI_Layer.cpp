@@ -72,7 +72,7 @@ void WiMOD_HCI_Process() {
   
   // data available ?
   if (rxLength > 0) {
-    printf("*** Found data\n");
+    // printf("*** Found data\n");
     // yes, forward to SLIP decoder, decoded SLIP message will be passed to
     // function "WiMOD_HCI_ProcessRxMessage"
     SLIP_DecodeData(rxBuf, rxLength);
