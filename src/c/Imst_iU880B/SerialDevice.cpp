@@ -39,6 +39,8 @@ bool SerialDevice_Open(const char* comPort, UINT32 baudRate, int bits, UINT8 par
   //QByteArray name  = portName.toLocal8Bit();
   ////const char* ptr = "/dev/tty.usbserial-IMST2"; //name.constData();
   //const char* ptr =name.constData();
+  
+  printf("Using device '%s'.\n", ptr);
 
   SerialDevice_ComHandle = ::open(ptr, O_RDWR | O_NOCTTY | O_NONBLOCK);
   if (SerialDevice_ComHandle != INVALID_HANDLE_VALUE) {

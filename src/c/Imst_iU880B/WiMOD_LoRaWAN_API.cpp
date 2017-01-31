@@ -26,6 +26,7 @@ static TWiMOD_HCI_Message* WiMOD_LoRaWAN_Process_RxMessage(TWiMOD_HCI_Message* r
 //-----------------------------------------------------------
 // Variables
 //-----------------------------------------------------------
+bool hasPingResponse = false;
 
 // reserve one TxMessage
 TWiMOD_HCI_Message TxMessage;
@@ -57,6 +58,8 @@ static void WiMOD_LoRaWAN_Process_DevMgmt_Message(TWiMOD_HCI_Message* rxMessage)
   switch(rxMessage->MsgID) {
     case DEVMGMT_MSG_PING_RSP:
       printf("Ping Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
+      hasPingResponse = true;
+      printf("In methode: %d\n", hasPingResponse);
       break;
     default:
       printf("unhandled DeviceMgmt message received - MsgID : 0x%02X\n\r", (UINT8)rxMessage->MsgID);

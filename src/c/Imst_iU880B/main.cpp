@@ -9,11 +9,14 @@
 
 #include "WiMOD_LoRaWAN_API.h"
 #include "utilities.h"
+#include <chrono>
 #include <stdio.h>
+#include <thread>
 
 #define COM_PORT  "COM128"
 
 // forward declarations
+extern bool hasPingResponse;
 static void Ping();
 
 int main(int argc, char *argv[]) {
@@ -35,7 +38,10 @@ int main(int argc, char *argv[]) {
   // wait for reply from USB adapter
   bool run = true;
   printf("Waiting for feedback from adaptor; press <q> to quit...");
-  while (run) {
+  while (run && !hasPingResponse) {
+    printf("hasPingResponse: %d\n", hasPingResponse);
+    Ping();
+    std::this_thread::sleep_for (std::chrono::seconds(1));
   
     // handle receiver process
     WiMOD_LoRaWAN_Process();

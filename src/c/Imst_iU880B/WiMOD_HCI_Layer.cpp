@@ -14,6 +14,7 @@
 //-----------------------------------------------------------
 // Defines
 //-----------------------------------------------------------
+
 // SLIP Message Receiver Callback
 static UINT8* WiMOD_HCI_ProcessRxMessage(UINT8* rxData, int rxLength);
 
