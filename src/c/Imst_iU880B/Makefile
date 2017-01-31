@@ -3,9 +3,17 @@
 CC=gcc
 CFLAGS=-I.
 CXXFLAGS=-std=c++11
+BIN=LoRaSender
 
-lorasender: SerialDevice.o slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o
-	${CC} -std=c++11 -o LoRaSender SerialDevice.o slip.o crc16.o WiMOD_HCI_Layer.o WiMOD_LoRaWAN_API.o main.o ${CFLAGS}
+SRC=$(wildcard *.cpp)
+OBJ=$(SRC:%.cpp=%.o)
+
+all: $(OBJ)
+	$(CC) ${CFLAGS} -o $(BIN) $^
+
+%.o: %.c
+	$(CC) $@ -c $<
 
 clean:
-	rm *.o LoRaSender LoRaSender.exe
+	rm -vf *.o
+	rm -v $(BIN)
