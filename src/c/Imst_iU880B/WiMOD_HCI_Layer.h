@@ -19,7 +19,7 @@ typedef unsigned char	UINT8;
 typedef uint16_t	    UINT16;
 typedef uint32_t	    UINT32;
 
-#define WIMOD_HCI_MSG_PAYLOD_SIZE 	300
+#define WIMOD_HCI_MSG_PAYLOD_SIZE   300
 #define WIMOD_HCI_MSG_FCS_SIZE		  2
 #define WIMOD_HCI_MSG_HEADER_SIZE   2
 

@@ -43,6 +43,8 @@ bool WiMOD_HCI_Close() {
 bool WiMOD_HCI_Init(const char* comPort, // comPort
                     TWiMOD_HCI_CbRxMessage cbRxMessage, // HCI msg receiver callback
                     TWiMOD_HCI_Message* rxMessage) { // intial rxMessage
+  printf("Initializing device...");
+  
   // init error counter
   HCI.CRCErrors = 0;
   
@@ -60,7 +62,15 @@ bool WiMOD_HCI_Init(const char* comPort, // comPort
   
   // init serial device
   // see HCI_Spec_v1.13 page 10 for details
-  return SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
+  bool result = SerialDevice_Open(comPort, Baudrate_115200, DataBits_8, Parity_None);
+  
+  if (result) {
+    printf("succesful.\n");
+  } else {
+    printf("failed.\n");
+  }
+  
+  return result;
 }
 //------------------------------------------------------------------------------
 

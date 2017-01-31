@@ -17,11 +17,17 @@
 
 #define COM_PORT  "COM128"
 
+typedef unsigned char	UINT8;
+
 // forward declarations
 extern bool hasPingResponse;
+extern bool hasMessageResponse;
+
+static void DoPing();
+static void DoSendUnconfirmedData();
 static char* getUsageString();
 static void Ping();
-static void DoPing();
+static void SendUnconfirmedData();
 
 // defines
 static int TIMEOUT_IN_SECONDS = 5;
@@ -29,7 +35,7 @@ static int TIMEOUT_IN_SECONDS = 5;
 // Possible switches:
 // p = ping
 // see: https://www.gnu.org/software/libc/manual/html_node/Using-Getopt.html#Using-Getopt
-static char* options = "p--?-- ";
+static char* options = "p--s--?-- ";
 
 int main(int argc, char *argv[]) {
   if (argc == 1) {
@@ -55,6 +61,9 @@ int main(int argc, char *argv[]) {
       case 'p': 
         Ping();
         break;
+      case 's':
+        SendUnconfirmedData();
+        break;
       case '?': 
         fprintf (stderr, getUsageString(), argv[0]);
         break;
@@ -71,8 +80,24 @@ void DoPing() {
   WiMOD_LoRaWAN_SendPing();
 }
 
+void DoSendUnconfirmedData() {
+  // port 0x21
+  // TODO: Adapt?
+  UINT8 port = 0x21;
+  
+  UINT8 data[4];
+  
+  data[0] = 0x01;
+  data[1] = 0x02;
+  data[2] = 0x03;
+  data[3] = 0x04;
+  
+  // TODO: Send actual message
+  WiMOD_LoRaWAN_SendUnconfirmedRadioData(port, data, 4);
+}
+
 char* getUsageString() {
-  return "usage: %s -p \nOptions: \n     -p  : Send ping\n\n";
+  return "usage: %s -p \nOptions: \n     -p  : Send ping\n     -s  : Send unconfirmed message\n\n";
 }
 
 void Ping() {
@@ -96,4 +121,26 @@ void Ping() {
     printf("Ping FAILED with timeout after %d seconds.\n", TIMEOUT_IN_SECONDS);
   }
   
+}
+
+void SendUnconfirmedData() {
+  // TODO figure out why message has to be sent twice
+  DoSendUnconfirmedData();
+  int waitInSeconds = 0; // obviously not really seconds, but close enough
+  
+  while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasMessageResponse) {
+    DoSendUnconfirmedData();
+    std::this_thread::sleep_for (std::chrono::seconds(1));
+    
+    // handle receiver process
+    WiMOD_LoRaWAN_Process();
+
+    ++waitInSeconds;
+  }
+  
+  if (hasMessageResponse) {
+    printf("Message was successfully received after about %d seconds.\n", waitInSeconds);
+  } else {
+    printf("Message FAILED with timeout after %d seconds.\n", TIMEOUT_IN_SECONDS);
+  }  
 }

@@ -111,7 +111,7 @@ bool SerialDevice_SendData(UINT8* data, int txLength) {
   size_t  numTxBytes = ::write(SerialDevice_ComHandle, data, txLength);
 
   if (numTxBytes == (size_t)txLength) {
-    printf("successful.");
+    printf("successful.\n");
     return true;
   } else {
     printf("failed.\n");

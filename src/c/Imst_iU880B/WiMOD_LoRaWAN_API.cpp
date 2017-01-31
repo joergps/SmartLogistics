@@ -10,6 +10,7 @@
 // Includes
 //-----------------------------------------------------------
 #include <stdio.h>
+#include <string.h>
 #include "WiMOD_LoRaWAN_API.h"
 #include "WiMOD_HCI_Layer.h"
 
@@ -27,6 +28,7 @@ static TWiMOD_HCI_Message* WiMOD_LoRaWAN_Process_RxMessage(TWiMOD_HCI_Message* r
 // Variables
 //-----------------------------------------------------------
 bool hasPingResponse = false;
+bool hasMessageResponse = false;
 
 // reserve one TxMessage
 TWiMOD_HCI_Message TxMessage;
@@ -68,9 +70,11 @@ static void WiMOD_LoRaWAN_Process_DevMgmt_Message(TWiMOD_HCI_Message* rxMessage)
 
 // Handle received LoRaWAN SAP messages
 static void WiMOD_LoRaWAN_Process_LoRaWAN_Message(TWiMOD_HCI_Message* rxMessage) {
+  // printf("In ..LoRaWAN_Message... \n");
   switch(rxMessage->MsgID) {
     case LORAWAN_MSG_SEND_UDATA_RSP:
       printf("Send U-Data Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
+      hasMessageResponse = true;
       break;
     case LORAWAN_MSG_SEND_CDATA_RSP:
       printf("Send C-Data Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
@@ -91,6 +95,25 @@ static TWiMOD_HCI_Message* WiMOD_LoRaWAN_Process_RxMessage(TWiMOD_HCI_Message* r
     break;
   }
   return &RxMessage;
+}
+
+int WiMOD_LoRaWAN_SendUnconfirmedRadioData(UINT8 port, UINT8* data, int length) {
+  // 1. check length
+  if (length > (WIMOD_HCI_MSG_PAYLOD_SIZE - 1)) {
+    return -1;
+  }
+  
+  // 2. init header
+  TxMessage.SapID	  = LORAWAN_SAP_ID;
+  TxMessage.MsgID	  = LORAWAN_MSG_SEND_UDATA_REQ;
+  TxMessage.Length	= 1 + length;  
+
+  // 3. init payload
+  TxMessage.Payload[0] = port;
+  memcpy(&TxMessage.Payload[1], data, length);
+  
+  // 4. send message with payload
+  return WiMOD_HCI_SendMessage(&TxMessage);
 }
 
 int WiMOD_LoRaWAN_SendPing() {
