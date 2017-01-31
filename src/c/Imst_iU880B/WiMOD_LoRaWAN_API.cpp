@@ -39,6 +39,29 @@ TWiMOD_HCI_Message RxMessage;
 //-----------------------------------------------------------
 // Implementation
 //-----------------------------------------------------------
+void WiMOD_LoRaWAN_ActivateDevice(UINT8 deviceId, UINT8[] networkSessionKey, UINT8[] applicationSessionKey) {
+  // TODO Check length of networkSessionKey and applicationSessionKey
+  
+  // 2. init header
+  TxMessage.SapID	  = LORAWAN_ID; 
+  TxMessage.MsgID	  = LORAWAN_MSG_ACTIVATE_DEVICE_REQ;
+  TxMessage.Length	= 36;  
+
+  // 3. init payload
+  // (see Spec p. 25)
+  // a) Payload[0..3] = deviceId
+  memcpy(&TxMessage.Payload[0], deviceId, 4);  
+  
+  // b) Payload[4..19] = networkSessionKey
+  memcpy(&TxMessage.Payload[4], networkSessionKey, SESSION_KEY_LENGTH);  
+  
+  // c) Payload[20..35] = applicationSessionKey
+  memcpy(&TxMessage.Payload[20], applicationSessionKey, SESSION_KEY_LENGTH);  
+  
+  // 4. send message with payload
+  return WiMOD_HCI_SendMessage(&TxMessage);  
+}
+
 void WiMOD_LoRaWAN_Close() {
   WiMOD_HCI_Close();
 }

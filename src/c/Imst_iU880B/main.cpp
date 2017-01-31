@@ -18,6 +18,7 @@
 #define COM_PORT  "COM128"
 
 typedef unsigned char	UINT8;
+typedef uint32_t UINT32;
 
 // forward declarations
 extern bool hasPingResponse;
@@ -31,6 +32,9 @@ static void SendUnconfirmedData();
 
 // defines
 static int TIMEOUT_IN_SECONDS = 5;
+static UINT32 DEVICE_ID = 1;
+static UINT8 NETWORK_SESSION_KEY[16] = {1}; // Network Session Key = [1][0]...[0]
+static UINT8 APPLICATION_SESSION_KEY[16] = {2}; // Application Session Key = [2][0]...[0]
 
 // Possible switches:
 // p = ping
@@ -124,12 +128,13 @@ void Ping() {
 }
 
 void SendUnconfirmedData() {
-  // TODO figure out why message has to be sent twice
+  WiMOD_LoRaWAN_ActivateDevice(DEVICE_ID, NETWORK_SESSION_KEY, APPLICATION_SESSION_KEY);
+
+
   DoSendUnconfirmedData();
   int waitInSeconds = 0; // obviously not really seconds, but close enough
   
   while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasMessageResponse) {
-    DoSendUnconfirmedData();
     std::this_thread::sleep_for (std::chrono::seconds(1));
     
     // handle receiver process
