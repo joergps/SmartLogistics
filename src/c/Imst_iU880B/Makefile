@@ -2,7 +2,7 @@
 # see: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 CC=gcc
 CFLAGS=-I.
-CXXFLAGS=-std=c++11
+CXXFLAGS=-std=c++11 -Wno-write-strings
 BIN=LoRaSender
 
 SRC=$(wildcard *.cpp)
