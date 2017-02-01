@@ -66,8 +66,9 @@ static const TIDString WiMOD_LoRaWAN_StatusStrings[] =
 //-----------------------------------------------------------
 // Variables
 //-----------------------------------------------------------
-bool hasPingResponse = false;
+bool hasDeviceInfoResponse = false;
 bool hasMessageResponse = false;
+bool hasPingResponse = false;
 
 // reserve one TxMessage
 TWiMOD_HCI_Message TxMessage;
@@ -112,6 +113,23 @@ bool WiMOD_LoRaWAN_Init(const char* comPort) {
                   &RxMessage); // rx message
 }
 
+int WiMOD_LoRaWAN_GetDeviceInformation() {
+  printf("Getting device information...");
+  // Init header
+  TxMessage.SapID	  = DEVMGMT_SAP_ID;
+  TxMessage.MsgID	  = DEVMGMT_MSG_GET_DEVICE_INFO_REQ;
+  TxMessage.Length	= 0;
+  
+  // Send message
+  int result = WiMOD_HCI_SendMessage(&TxMessage);
+  if (result == 0) {
+    printf("successful.\n");
+  } else {
+    printf("failed.\n");
+  }
+  return result;
+}
+
 void WiMOD_LoRaWAN_Process() {
   // call HCI process
   WiMOD_HCI_Process();
@@ -124,6 +142,10 @@ static void WiMOD_LoRaWAN_Process_DevMgmt_Message(TWiMOD_HCI_Message* rxMessage)
       WiMOD_LoRaWAN_ShowResponse("Ping response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
       hasPingResponse = true;
       break;
+    case DEVMGMT_MSG_GET_DEVICE_INFO_RSP:
+      WiMOD_LoRaWAN_ShowResponse("Device info response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
+      hasDeviceInfoResponse = true;
+      break;      
     default:
       printf("unhandled DeviceMgmt message received - MsgID : 0x%02X\n\r", (UINT8)rxMessage->MsgID);
       break;
@@ -136,11 +158,15 @@ static void WiMOD_LoRaWAN_Process_LoRaWAN_Message(TWiMOD_HCI_Message* rxMessage)
   switch(rxMessage->MsgID) {
     case LORAWAN_MSG_SEND_UDATA_RSP:
       WiMOD_LoRaWAN_ShowResponse("Send U-Data response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
+      printf("Send message!\n");
       hasMessageResponse = true;
       break;
     case LORAWAN_MSG_SEND_CDATA_RSP:
       WiMOD_LoRaWAN_ShowResponse("Send C-Data response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
       break;
+    case LORAWAN_MSG_ACTIVATE_DEVICE_RSP:
+      WiMOD_LoRaWAN_ShowResponse("Activate device response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
+      break;      
     default:
       printf("unhandled LoRaWAN SAP message received - MsgID : 0x%02X\n\r", (UINT8)rxMessage->MsgID);
       break;

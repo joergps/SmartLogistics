@@ -19,10 +19,18 @@ typedef unsigned char	UINT8;
 #define DEVMGMT_SAP_ID		    0x01
 #define LORAWAN_SAP_ID        0x10
 
+//-----------------------------------------------------------
+//  Message Identifier
+//-----------------------------------------------------------
+
 #define DEVMGMT_MSG_PING_REQ	0x01
 #define DEVMGMT_MSG_PING_RSP  0x02
 
+#define DEVMGMT_MSG_GET_DEVICE_INFO_REQ 0x03
+#define DEVMGMT_MSG_GET_DEVICE_INFO_RSP 0x04
+
 #define LORAWAN_MSG_ACTIVATE_DEVICE_REQ   0x01
+#define LORAWAN_MSG_ACTIVATE_DEVICE_RSP   0x02
 
 #define LORAWAN_MSG_SEND_UDATA_REQ 0x0D
 #define LORAWAN_MSG_SEND_UDATA_RSP 0x0E
@@ -74,6 +82,8 @@ typedef struct {
 int WiMOD_LoRaWAN_ActivateDevice(UINT8* deviceId, UINT8* networkSessionKey, UINT8* applicationSessionKey);
 
 void WiMOD_LoRaWAN_Close();
+
+int WiMOD_LoRaWAN_GetDeviceInformation();
 
 // Initialize device
 bool WiMOD_LoRaWAN_Init(const char* comPort);

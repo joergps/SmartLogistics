@@ -21,8 +21,9 @@ typedef unsigned char	UINT8;
 typedef uint32_t UINT32;
 
 // forward declarations
-extern bool hasPingResponse;
+extern bool hasDeviceInfoResponse;
 extern bool hasMessageResponse;
+extern bool hasPingResponse;
 
 static void DoPing();
 static void DoSendUnconfirmedData();
@@ -128,6 +129,28 @@ void Ping() {
 }
 
 void SendUnconfirmedData() {
+  /* DOES NOT WORK, WHY? 
+  WiMOD_LoRaWAN_GetDeviceInformation();
+  WiMOD_LoRaWAN_GetDeviceInformation();
+  int waitInSeconds = 0; // obviously not really seconds, but close enough
+  
+  while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasDeviceInfoResponse) {
+    std::this_thread::sleep_for (std::chrono::seconds(1));
+    WiMOD_LoRaWAN_GetDeviceInformation();
+    
+    // handle receiver process
+    WiMOD_LoRaWAN_Process();
+
+    ++waitInSeconds;
+  }
+  
+  if (hasDeviceInfoResponse) {
+    printf("Device information was successfully received after about %d seconds.\n", waitInSeconds);
+  } else {
+    printf("Device information FAILED with timeout after %d seconds.\n", TIMEOUT_IN_SECONDS);
+  }  
+  */
+  
   printf("Activating device '%d'...", DEVICE_ID);
   WiMOD_LoRaWAN_ActivateDevice(DEVICE_ID, NETWORK_SESSION_KEY, APPLICATION_SESSION_KEY);
   int activationResult = WiMOD_LoRaWAN_ActivateDevice(DEVICE_ID, NETWORK_SESSION_KEY, APPLICATION_SESSION_KEY);
@@ -141,7 +164,8 @@ void SendUnconfirmedData() {
   DoSendUnconfirmedData();
   int waitInSeconds = 0; // obviously not really seconds, but close enough
   
-  while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasMessageResponse) {
+  while (waitInSeconds < TIMEOUT_IN_SECONDS && !hasMessageResponse) {      
+    DoSendUnconfirmedData();
     std::this_thread::sleep_for (std::chrono::seconds(1));
     
     // handle receiver process
@@ -151,7 +175,7 @@ void SendUnconfirmedData() {
   }
   
   if (hasMessageResponse) {
-    printf("Message was successfully received after about %d seconds.\n", waitInSeconds);
+    printf("Message was successfully send after about %d seconds.\n", waitInSeconds);
   } else {
     printf("Message FAILED with timeout after %d seconds.\n", TIMEOUT_IN_SECONDS);
   }  
