@@ -32,9 +32,9 @@ static void SendUnconfirmedData();
 
 // defines
 static int TIMEOUT_IN_SECONDS = 5;
-static UINT32 DEVICE_ID = 1;
-static UINT8 NETWORK_SESSION_KEY[16] = {1}; // Network Session Key = [1][0]...[0]
-static UINT8 APPLICATION_SESSION_KEY[16] = {2}; // Application Session Key = [2][0]...[0]
+static UINT8 DEVICE_ID[4] = {0x01};
+static UINT8 NETWORK_SESSION_KEY[16] = {0x01}; // Network Session Key = [1][0]...[0]
+static UINT8 APPLICATION_SESSION_KEY[16] = {0x02}; // Application Session Key = [2][0]...[0]
 
 // Possible switches:
 // p = ping
@@ -128,9 +128,16 @@ void Ping() {
 }
 
 void SendUnconfirmedData() {
+  printf("Activating device '%d'...", DEVICE_ID);
   WiMOD_LoRaWAN_ActivateDevice(DEVICE_ID, NETWORK_SESSION_KEY, APPLICATION_SESSION_KEY);
-
-
+  int activationResult = WiMOD_LoRaWAN_ActivateDevice(DEVICE_ID, NETWORK_SESSION_KEY, APPLICATION_SESSION_KEY);
+  if (activationResult == 0) {
+    printf("successful.\n");
+  } else {
+    printf("failed.\n");
+    return;
+  }
+  
   DoSendUnconfirmedData();
   int waitInSeconds = 0; // obviously not really seconds, but close enough
   

@@ -39,18 +39,18 @@ TWiMOD_HCI_Message RxMessage;
 //-----------------------------------------------------------
 // Implementation
 //-----------------------------------------------------------
-void WiMOD_LoRaWAN_ActivateDevice(UINT8 deviceId, UINT8[] networkSessionKey, UINT8[] applicationSessionKey) {
+int WiMOD_LoRaWAN_ActivateDevice(UINT8* deviceId, UINT8* networkSessionKey, UINT8* applicationSessionKey) {
   // TODO Check length of networkSessionKey and applicationSessionKey
   
   // 2. init header
-  TxMessage.SapID	  = LORAWAN_ID; 
+  TxMessage.SapID	  = LORAWAN_SAP_ID; 
   TxMessage.MsgID	  = LORAWAN_MSG_ACTIVATE_DEVICE_REQ;
   TxMessage.Length	= 36;  
 
   // 3. init payload
   // (see Spec p. 25)
   // a) Payload[0..3] = deviceId
-  memcpy(&TxMessage.Payload[0], deviceId, 4);  
+  memcpy(&TxMessage.Payload[0], deviceId, DEVICE_ID_LENGTH);  
   
   // b) Payload[4..19] = networkSessionKey
   memcpy(&TxMessage.Payload[4], networkSessionKey, SESSION_KEY_LENGTH);  
@@ -140,7 +140,7 @@ int WiMOD_LoRaWAN_SendUnconfirmedRadioData(UINT8 port, UINT8* data, int length) 
 }
 
 int WiMOD_LoRaWAN_SendPing() {
-  printf("Ping started...");
+  printf("Pinging device...");
   // Init header
   TxMessage.SapID	  = DEVMGMT_SAP_ID;
   TxMessage.MsgID	  = DEVMGMT_MSG_PING_REQ;
@@ -148,7 +148,10 @@ int WiMOD_LoRaWAN_SendPing() {
   
   // Send message
   int result = WiMOD_HCI_SendMessage(&TxMessage);
-
-  printf("done with result '%d'.\n", result);
+  if (result == 0) {
+    printf("successful.\n");
+  } else {
+    printf("failed.\n");
+  }
   return result;
 }

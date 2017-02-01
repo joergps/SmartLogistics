@@ -119,12 +119,12 @@ int WiMOD_HCI_SendMessage(TWiMOD_HCI_Message* txMessage) {
     int result = SerialDevice_SendData(TxBuffer, txLength);
     if (result > 0) {
       // send message worked!
-      return 1;
+      return 0;
     }
   }
 
   // ERROR: Slip layer could not encode message
-  return 0;
+  return 1;
 }
 
 static UINT8* WiMOD_HCI_ProcessRxMessage(UINT8* rxData, int rxLength) {

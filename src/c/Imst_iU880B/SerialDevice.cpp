@@ -107,14 +107,14 @@ bool SerialDevice_SendData(UINT8* data, int txLength) {
     return false;
   }
   
-  printf("Sending message...");
+  // printf("Sending message...");
   size_t  numTxBytes = ::write(SerialDevice_ComHandle, data, txLength);
 
   if (numTxBytes == (size_t)txLength) {
-    printf("successful.\n");
+    // printf("successful.\n");
     return true;
   } else {
-    printf("failed.\n");
+    // printf("failed.\n");
     return false;
   }
 }

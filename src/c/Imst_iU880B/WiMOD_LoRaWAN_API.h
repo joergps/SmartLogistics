@@ -18,18 +18,21 @@ typedef unsigned char	UINT8;
 #define DEVMGMT_MSG_PING_REQ	0x01
 #define DEVMGMT_MSG_PING_RSP  0x02
 
+#define LORAWAN_MSG_ACTIVATE_DEVICE_REQ   0x01
+
 #define LORAWAN_MSG_SEND_UDATA_REQ 0x0D
 #define LORAWAN_MSG_SEND_UDATA_RSP 0x0E
 
 #define LORAWAN_MSG_SEND_CDATA_RSP 0x12
 
+#define DEVICE_ID_LENGTH            4
 #define SESSION_KEY_LENGTH          16
 
 
 //-----------------------------------------------------------
 // Method declarations
 //-----------------------------------------------------------
-void WiMOD_LoRaWAN_ActivateDevice(UINT8 deviceId, UINT8[] networkSessionKey, UINT8[] applicationSessionKey);
+int WiMOD_LoRaWAN_ActivateDevice(UINT8* deviceId, UINT8* networkSessionKey, UINT8* applicationSessionKey);
 
 void WiMOD_LoRaWAN_Close();
 
