@@ -24,6 +24,45 @@ static void WiMOD_LoRaWAN_Process_LoRaWAN_Message(TWiMOD_HCI_Message* rxMessage)
 
 static TWiMOD_HCI_Message* WiMOD_LoRaWAN_Process_RxMessage(TWiMOD_HCI_Message* rxMessage);
 
+static void WiMOD_LoRaWAN_ShowResponse(const char* string, const TIDString* statusTable, UINT8 statusID);
+
+//-----------------------------------------------------------
+// Status codes translation
+//-----------------------------------------------------------
+
+// Status Codes for DeviceMgmt Response Messages
+static const TIDString WiMOD_DeviceMgmt_StatusStrings[] =
+{
+    { DEVMGMT_STATUS_OK,                   "ok" },
+    { DEVMGMT_STATUS_ERROR,                "error" } ,
+    { DEVMGMT_STATUS_CMD_NOT_SUPPORTED,    "command not supported" },
+    { DEVMGMT_STATUS_WRONG_PARAMETER,      "wrong parameter" },
+    { DEVMGMT_STATUS_WRONG_DEVICE_MODE,    "wrong device mode" },
+
+    // end of table
+    { 0, 0 }
+};
+
+// Status Codes for LoRaWAN Response Messages
+static const TIDString WiMOD_LoRaWAN_StatusStrings[] =
+{
+    { LORAWAN_STATUS_OK,                    "ok" },
+    { LORAWAN_STATUS_ERROR,                 "error" } ,
+    { LORAWAN_STATUS_CMD_NOT_SUPPORTED,     "command not supported" },
+    { LORAWAN_STATUS_WRONG_PARAMETER,       "wrong parameter" },
+    { LORAWAN_STATUS_WRONG_DEVICE_MODE,     "wrong device mode" },
+    { LORAWAN_STATUS_NOT_ACTIVATED,         "device not activated" },
+    { LORAWAN_STATUS_BUSY,                  "device busy - command rejected" },
+    { LORAWAN_STATUS_QUEUE_FULL,            "message queue full - command rejected" },
+    { LORAWAN_STATUS_LENGTH_ERROR,          "HCI message length error" },
+    { LORAWAN_STATUS_NO_FACTORY_SETTINGS,   "no factory settings available" },
+    { LORAWAN_STATUS_CHANNEL_BLOCKED_BY_DC, "error: channel blocked due to duty cycle, please try later again" },
+    { LORAWAN_STATUS_CHANNEL_NOT_AVAILABLE, "error: channel not available" },
+
+    // end of table
+    { 0, 0 }
+};
+
 //-----------------------------------------------------------
 // Variables
 //-----------------------------------------------------------
@@ -82,7 +121,7 @@ void WiMOD_LoRaWAN_Process() {
 static void WiMOD_LoRaWAN_Process_DevMgmt_Message(TWiMOD_HCI_Message* rxMessage) {
   switch(rxMessage->MsgID) {
     case DEVMGMT_MSG_PING_RSP:
-      printf("Ping Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
+      WiMOD_LoRaWAN_ShowResponse("Ping response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
       hasPingResponse = true;
       break;
     default:
@@ -96,11 +135,11 @@ static void WiMOD_LoRaWAN_Process_LoRaWAN_Message(TWiMOD_HCI_Message* rxMessage)
   // printf("In ..LoRaWAN_Message... \n");
   switch(rxMessage->MsgID) {
     case LORAWAN_MSG_SEND_UDATA_RSP:
-      printf("Send U-Data Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
+      WiMOD_LoRaWAN_ShowResponse("Send U-Data response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
       hasMessageResponse = true;
       break;
     case LORAWAN_MSG_SEND_CDATA_RSP:
-      printf("Send C-Data Response, Status : 0x%02X\n\r", (UINT8)rxMessage->Payload[0]);
+      WiMOD_LoRaWAN_ShowResponse("Send C-Data response", WiMOD_DeviceMgmt_StatusStrings, rxMessage->Payload[0]);
       break;
     default:
       printf("unhandled LoRaWAN SAP message received - MsgID : 0x%02X\n\r", (UINT8)rxMessage->MsgID);
@@ -154,4 +193,17 @@ int WiMOD_LoRaWAN_SendPing() {
     printf("failed.\n");
   }
   return result;
+}
+
+static void WiMOD_LoRaWAN_ShowResponse(const char* string, const TIDString* statusTable, UINT8 statusID) {
+  while(statusTable->String) {
+    if (statusTable->ID == statusID) {
+      printf(string);
+      printf(" - Status(0x%02X) : ", statusID);
+      printf(statusTable->String);
+      printf("\n\r");
+      return;
+    }
+    statusTable++;
+  }
 }

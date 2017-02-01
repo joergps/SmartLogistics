@@ -12,6 +12,10 @@
 //-----------------------------------------------------------
 typedef unsigned char	UINT8;
 
+//-----------------------------------------------------------
+//  Endpoint (SAP) Identifier
+//-----------------------------------------------------------
+
 #define DEVMGMT_SAP_ID		    0x01
 #define LORAWAN_SAP_ID        0x10
 
@@ -27,6 +31,41 @@ typedef unsigned char	UINT8;
 
 #define DEVICE_ID_LENGTH            4
 #define SESSION_KEY_LENGTH          16
+
+//-----------------------------------------------------------
+//  Device Management SAP Message Identifier
+//-----------------------------------------------------------
+
+// Status Identifier
+#define	DEVMGMT_STATUS_OK                       0x00
+#define	DEVMGMT_STATUS_ERROR                    0x01
+#define	DEVMGMT_STATUS_CMD_NOT_SUPPORTED        0x02
+#define	DEVMGMT_STATUS_WRONG_PARAMETER          0x03
+#define DEVMGMT_STATUS_WRONG_DEVICE_MODE        0x04
+
+//-----------------------------------------------------------
+//  LoRaWAN SAP Message Identifier
+//-----------------------------------------------------------
+
+// Status Identifier
+#define LORAWAN_STATUS_OK                       0x00
+#define	LORAWAN_STATUS_ERROR                    0x01
+#define	LORAWAN_STATUS_CMD_NOT_SUPPORTED        0x02
+#define	LORAWAN_STATUS_WRONG_PARAMETER          0x03
+#define LORAWAN_STATUS_WRONG_DEVICE_MODE        0x04
+#define LORAWAN_STATUS_NOT_ACTIVATED            0x05
+#define LORAWAN_STATUS_BUSY                     0x06
+#define LORAWAN_STATUS_QUEUE_FULL               0x07
+#define LORAWAN_STATUS_LENGTH_ERROR             0x08
+#define LORAWAN_STATUS_NO_FACTORY_SETTINGS      0x09
+#define LORAWAN_STATUS_CHANNEL_BLOCKED_BY_DC    0x0A
+#define LORAWAN_STATUS_CHANNEL_NOT_AVAILABLE    0x0B
+
+// helper struct for ID -> string conversion
+typedef struct {
+  int         ID;
+  const char* String;
+} TIDString;
 
 
 //-----------------------------------------------------------
